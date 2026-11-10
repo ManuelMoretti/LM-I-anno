@@ -1,0 +1,213 @@
+\chapter{Introduction}
+...
+
+\section{Gaussian integrals}
+We define the generating functional of all the momenta of the Gaussian as 
+\begin{equation}
+    I(t) = \frac{\intR dx\,e^{-Ax^2 - xt}}{\intR dx\,e^{-Ax^2}},
+\end{equation}
+such that, when expanding in Taylor series, we have 
+\begin{equation}
+    I(t) = \sum_{n=0}^\infty M_n(A)\frac{(-t)^n}{n!},
+\end{equation}
+where the coefficients $M_n(A)$, by definition, are 
+\begin{equation}
+    M_n(A) = \bigg(-\frac{d}{dt}\bigg)^nI(t)\bigg|_{t = 0}.
+\end{equation}
+Consider now the exponent in $I(t)$ expression and complete the square using 
+\begin{equation}
+    Ax^2 + xt = A\bigg(a + \frac{t}{2A}\bigg)^2 - \frac{t^2}{4A}.
+\end{equation}
+In this way, we get 
+\begin{equation}
+    I(t) = \frac{\intR dx\,e^{-A(a + t/4A)^2 + t^2/4A}}{\intR dx\,e^{-Ax^2}} = e^{t^2/4A}.
+\end{equation}
+With this simple expression for the generating functional we can compute some momenta; for example, the first one is 
+\begin{equation}
+    M_1 = -\frac{d}{dt}I(t)\bigg|_{t = 0} = -\frac{t}{2A}e^{t^2/4A}\bigg|_{t = 0} = 0,
+\end{equation}
+as expected for all the odd momenta, while the second one is 
+\begin{equation}
+    M_2 = \frac{d^2}{dt^2}I(t)\bigg|_{t = 0} = \bigg(\frac{1}{2A} + \frac{t^2}{4A^2}\bigg)e^{t^2/4A}\bigg|_{t = 0} = -\frac{1}{2A}.
+\end{equation}
+Obviously, one can use the previous momenta to compute the following one, for example 
+\begin{equation}
+    M_4 = \frac{d^4}{dt^4}I(t)\bigg|_{t = 0} = \frac{d^2}{dt^2}M_2\bigg|_{t = 0} = \frac{3}{4A^2}.
+\end{equation}
+Now suppose that the generating functional is instead defined as 
+\begin{equation}
+    I(t) = \frac{1}{\norm}\intR dx\,e^{-Ax^2 + f(x)},\quad \norm = \intR dx\,e^{-Ax^2},
+\end{equation}
+where now in place of $xt$ we have a general function $f(x)$, also we have defined the normalization $\norm$. Now through Taylor expansion we see that 
+\begin{equation}
+    e^{f(x)} = \sum_{n=0}^\infty c_n x^n,
+\end{equation}
+since, at the end of the day, $e^{f(x)}$ can be seen as a function $g(x)$ which can be expanded with Taylor. Thus, using this expansion in the expression of $I(t)$, we have 
+\begin{equation}
+    I(t) = \frac{1}{\norm}\sum_{n=0}^\infty c_n\intR dx\,e^{-Ax^2}x^n.
+\end{equation}
+However, we know that 
+\begin{equation}
+    \intR e^{-Ax^2}x^n = \bigg(-\frac{d}{dt}\bigg)^n\intR dx\,e^{-Ax^2 - xt}\bigg|_{t = 0}.
+\end{equation}
+Hence, we can rewrite $I(t)$ like 
+\begin{equation}
+    \begin{split}
+        I(t) &= \sum_{n=0}^\infty c_n\bigg(-\frac{d}{dt}\bigg)^n\intR dx\,e^{-Ax^2 - xt}\bigg|_{t = 0} \\
+        &= \exp{\bigg\{f\bigg(-\frac{d}{dt}\bigg)\bigg\}}I(t)\bigg|_{t = 0},
+    \end{split}
+\end{equation}
+where in the last step we again used the Taylor series of the exponential function. All this discussion becomes quite useful if the generating functional is defined as 
+\begin{equation}
+    I(t) = \frac{1}{\norm}\intR dx\,e^{-Ax^2 + \alpha f(x)},
+\end{equation}
+where $\alpha \in \bb{R}$. In particular, if $\alpha \ll 1$, we can use perturbation theory to write 
+\begin{equation}
+    \begin{split}
+        I(t) &= \exp{\bigg\{\alpha f\bigg(-\frac{d}{dt}\bigg)\bigg\}}I(t)\bigg|_{t = 0} \\
+        &= I(t)|_{t = 0} + \alpha f\bigg(-\frac{d}{dt}\bigg)I(t)\bigg|_{t = 0} + \frac{\alpha^2}{2!}f\bigg(-\frac{d}{dt}\bigg)^2I(t)\bigg|_{t = 0} + \cdots.
+    \end{split}
+\end{equation}
+
+Previously, we defined in Quantum Mechanic a new quantization scheme involving the partition function 
+\begin{equation}
+    \PF = \int \pathd q\,e^{iS},\quad S = \intR dt\,\bigg[\frac{1}{2}m\dot{q}^2 - V(q)\bigg].
+\end{equation}
+We now generalize to Quantum Field Theory (QFT) by ``promoting'' the $q$ operators to fields $\phi(x)$. Thus, the action becomes 
+\begin{equation}
+    S = \int d^4x\,\frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2],
+\end{equation}
+consequently, the partition function is 
+\begin{equation}
+\label{eq: QFT partition function}
+    \PF = \int \pathd\phi\,e^{iS}.
+\end{equation}
+Now, as we do in QFT, we want to compute the correlation function 
+\begin{equation}
+    \mybrakett{0}{\TO{\phi(x_1)\cdots\phi(x_n)}}{0} = \int \pathd\phi\,e^{iS}\phi(x_1)\cdots\phi(x_n).
+\end{equation}
+For this purpose, we define the partition function
+\begin{equation}
+    \PF[J] = \int \pathd\phi\,e^{iS + i\int d^4x\,J(x)\phi(x)},
+\end{equation}
+with an added source term dependent of $J(x)\phi(x)$. This definition obviously reduce to \eqref{eq: QFT partition function} by setting $J(x) = 0$. Consequently, the action get modified in a similar way 
+\begin{equation}
+    S = \int d^4x\,\frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2 + J(x)\phi(x)].
+\end{equation}
+To derive the equations of motion (EOMs), we nedd to compute the Euler-Lagrange equations 
+\begin{equation}
+    \p_\mu\bigg(\frac{\delta\Lag}{\delta(\p_\mu\phi)}\bigg) - \frac{\delta\Lag}{\delta\phi} = 0,
+\end{equation}
+where the Lagrangian is of course the integranf of the previous action, namely
+\begin{equation}
+    \Lag = \frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2 + J(x)\phi(x)].
+\end{equation}
+The computation results in 
+\begin{equation}
+    (\square + m^2)\phi(x) = J(x),\quad \square \equiv \p_\mu\p^\mu.
+\end{equation}
+This is precisely the Klein-Gordon equation when we set $J(x) = 0$, also for this reason it is clear wy $J(x)$ is called a source term. 
+\begin{notz}
+    To make the notation a bit lighter, we can use $\vmedio{J\phi}_x =\int d^4x\,J(x)\phi(x)$. More generally, we set 
+    \begin{equation}
+        \vmedio{(\cdots)}_{xy\cdots z} \equiv \bigg(\int d^4x\int d^4y\,\cdots\int d^4z\bigg)\,(\cdots).
+    \end{equation}
+\end{notz}
+For the ordinary derivative $\p_i$ we have the property $\p_ix^j = \delta^j_i$. In a similar fashion, for the functional derivative holds the property
+\begin{equation}
+    \frac{\delta\phi(y)}{\delta\phi(x)} = \delta^4(x - y).
+\end{equation}
+Knowing this, we can see that 
+\begin{equation}
+    \begin{split}
+        -i\frac{\delta}{\delta J(x)}\PF[J] &= \int \pathd\phi\,\bigg(-i\frac{\delta}{\delta J(y)}e^{i\vmedio{J\phi}_x}\bigg)e^{iS} \\
+        &= \int \pathd\phi\,\phi(y)e^{i(S + \vmedio{J\phi}_x)}.
+    \end{split}
+\end{equation}
+Setting $J(x) = 0$ at the end of the computation returns exactly what we originally wanted to compute. Therefore, we can easily see that 
+\begin{equation}
+    \mybrakett{0}{\TO{\phi(x_1)\cdots\phi(x_n)}}{0} = \prod_{i=1}^n\bigg(-i\frac{\delta}{\delta J(x^i)}\bigg)\PF[J]\bigg|_{J = 0}.
+\end{equation}
+The partition function $\PF[J]$ can then be seen as the generating functional of the Green functions, namely 
+\begin{equation}
+    \PF[J] = \sum_{n = 0}^\infty G_n(x_1,\dots,x_n)\frac{J(x_1)\cdot J(x_n)}{n!}.
+\end{equation}
+All of this is very useful if we can compute the partition function. Let's try to do it for the free field. For this purpose we indicate the partition function as $\PF_0[J]$. Focusing on the exponent, we have 
+\begin{equation}
+    S_0 + \vmedio{J\phi}_x = \int d^4x\,\bigg(\frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 + J\phi\bigg).
+\end{equation}
+We now want to complete the square as we did before. However, to do it we first need to write the field $\phi(x)$ through its Fourier transform 
+\begin{equation}
+    \phi(x) = \int\frac{d^4k}{(2\pi)^4}\,e^{ikx}\t{\phi}(k),
+\end{equation}
+and also write the source term in an analogous way 
+\begin{equation}
+    J(x) = \int\frac{d^4k}{(2\pi)^4}\,e^{ikx}\t{J}(k).
+\end{equation}
+Substituting these in the exponent gets us  
+\begin{equation}
+    \begin{split}
+        S_0 + \vmedio{J\phi}_x &= \int d^4x\int\frac{d^4k}{(2\pi)^4}\int\frac{d^4\t{k}}{(2\pi)^4}\bigg\{-k\t{k}\t{\phi}(k)\t{\phi}(\t{k}) - \frac{m^2}{2}\t{\phi}(k)\t{\phi}(\t{k}) \\
+        &+ \frac{1}{2}[\t{J}(k)\t{\phi}(\t{k}) + \t{J}(\t{k})\t{\phi}(k)]\bigg\}e^{i(k + \t{k})x}.
+    \end{split}
+\end{equation}
+In the latter relation, we identify the definition of the Dirac delta, namely 
+\begin{equation}
+\label{eq: Dirac delta definition}
+    \int \frac{d^4x}{(2\pi)^4}e^{i(k + \t{k})x} = \delta(k - \t{k}).
+\end{equation}
+With it, the said expression simplifies to 
+\begin{equation}
+    S_0 + \vmedio{J\phi}_x = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4}\bigg[(k^2 - m^2)\t{\phi}(-k)\t{\phi}(k) + \t{J}(-k)\t{\phi}(k) + \t{J}(k)\t{\phi}(-k)\bigg].
+\end{equation}
+Now we can complete the square 
+\begin{equation}
+    \begin{split}
+        S_0 + \vmedio{J\phi}_x &= \frac{1}{2}\int\frac{d^4k}{(2\pi)^4}\bigg\{[\t{\phi}(-k) + \t{J}(-k)(k^2 - m^2)^{-1}](k^2 - m^2) \\
+        &\times [\t{\phi}(k) + (k^2 - m^2)^{-1}\t{J}(k)] - \t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\bigg\}.
+    \end{split}
+\end{equation}
+To simplify this expression, we can shift the field using 
+\begin{equation}
+\label{eq: field shift}
+    \t{\phi} + (k^2 - m^2)^{-1}\t{J}(x) \mapsto \t{\phi},
+\end{equation}
+thus getting
+\begin{equation}
+    S_0 + \vmedio{J\phi}_x = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4}\,\{\t{\phi}(-k)(k^2 - m^2)\t{\phi}(k) - \t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\},
+\end{equation}
+where since the translation \eqref{eq: field shift} has a unitary Jacobia, the integral's measure does not change. Therefore
+\begin{equation}
+    \begin{split}
+        \PF_0[J] &= \int \pathd\phi\,\exp{\bigg\{\frac{i}{2}\int \frac{d^4k}{(2\pi)^4}\t{\phi}(-k)(k^2 - m^2)\t{\phi}(k)\bigg\}} \\
+        &\times \exp{\bigg\{-\frac{i}{2}\int \frac{d^4k}{(2\pi)^4}\t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\bigg\}}.
+    \end{split}
+\end{equation}
+Going back to coordinate space from momentum space through the anti-Fourier transforms
+\begin{equation}
+    \t{phi}(k) = \int d^4x\,e^{-ikx}\phi(x),\quad J(x) = \int d^4x\,e^{-ikx}J(x),
+\end{equation}
+we get the exponent 
+\begin{multline}
+    \int \frac{d^4k}{(2\pi)^4}\int d^4x\int d^4y\,(k^2 - m^2)\phi(x)\phi(y)e^{-ik(x - y)} = \\ 
+    = \int \frac{d^4k}{(2\pi)^4}\int d^4x\int d^4y\,[\p_\mu\phi(x)\p^\mu\phi(y) - m^2\phi(x)\phi(y)]e^{ik(x - y)},
+\end{multline}
+where we have used the fact that 
+\begin{equation}
+    k^2e^{ik(x - y)} = \frac{\p}{\p x}\frac{\p}{\p y}e^{-ik(x - y)}.
+\end{equation}
+Then, using again the definition of the Dirac delta \eqref{eq: Dirac delta definition}, we obtain 
+\begin{multline}
+    \int \frac{d^4k}{(2\pi)^4}\int d^4x\int d^4y\,(k^2 - m^2)\phi(x)\phi(y)e^{-ik(x - y)} = \\ 
+    = \int d^4x\,[\p_\mu\phi\p^\mu\phi - m^2\phi(x)^2].
+\end{multline}
+Therefore, $\PF_0[J]$ becomes 
+\begin{equation}
+    \PF_0[J] = \int \pathd\phi\,e^{iS_0} \exp{\bigg\{-\frac{i}{2}\int \frac{d^4k}{(2\pi)^4} \t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\bigg\}}.
+\end{equation}
+Renormalizing with $\norm$, we obtain
+\begin{equation}
+    \begin{split}
+        ...
+    \end{split}
+\end{equation}
