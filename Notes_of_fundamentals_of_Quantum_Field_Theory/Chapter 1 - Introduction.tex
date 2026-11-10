@@ -1,4 +1,105 @@
 \chapter{Introduction}
+There are a few ways to quantize a theory. The familiar \emph{canonical quantization method} consists in promoting the fields to operators, which satisfy some particular commutation relations. Observing then that fields are just an infinite sum of oscillators, we can then construct the Fock's space and treat interactions through perturbation theory. Feynman's diagrams are a fundamental tool to do visualize all the orders of interaction, from the tree-level up to whatever loop order we are interested in. However, the main problem is that loop contributions usually diverge, yielding to infinities that should be treated accordingly, mainly through the process of \emph{renormalization}.
+
+A different way to quantize a theory is the \emph{Feynman quantization method}, which has the advantage that it is a really convenient way to derive correlation functions, the main object that we want to compute in Quantum Field Theory (QFT). In practice, we first need to define a \emph{partition function}, or equivalently the \emph{free-energy}, from where, using only functional derivatives, we compute the correlation functions that we need. 
+
+\section{Reminiscences of Quantum Mechanics}
+In Quantum Mechanics (QM), an initial state $\ket{q_i,t_i}$ can evolve into a final state $\ket{q_f,t_f}$ through the time evolution operator 
+\begin{equation}
+    U(t_f - t_i) := e^{-iH(t_f - t_i)}. 
+\end{equation}
+In particular, we are interested in the probability that the initial state becomes the final state, in other words in 
+\begin{equation}
+\label{eq: QM correlation function}
+    \mybrakett{q_f,t_f}{U(t_f - t_i)}{q_i,t_i} \equiv \mybraket{q_f,t_f}{q_i,t_i}.
+\end{equation}
+To compute such an object, we first recall that 
+\begin{equation}
+    U(t_f - t_i) = U(t_f - t_n)U(t_n - t_{n - 1}) \cdots U(t_2 - t_1)U(t_1 - t_i).
+\end{equation}
+Using this property of the time evolution operator in \eqref{eq: QM correlation function} and the completion relation 
+\begin{equation}
+    \IM = \int dq\,\ket{q}\bra{q},
+\end{equation}
+we can write \eqref{eq: QM correlation function} as 
+\begin{multline}
+    \mybrakett{q_f,t_f}{U(t_f - t_n) \IM \cdots \IM U(t_1 - t_i)}{q_i,t_i} = \\ 
+    = \int dq_n\cdots\int dq_1\mybrakett{q_f,t_f}{U(t_f - t_n)}{q_n,t_n}\cdots\mybrakett{q_1,t_1}{U(t_1 - t_i)}{q_i,t_i}.
+\end{multline}
+For simplicity, we define the time interval $\tau := (t_f - t_i)/n$, such that 
+\begin{equation}
+    U(\tau) = e^{-iH\tau},
+\end{equation}
+where the Hamiltonian $H$ is given by 
+\begin{equation}
+    H = T(p) + V(q),\quad T(p) \equiv \frac{p^2}{2m},
+\end{equation}
+with the operators $q$ and $p$ satisfying the commutation relation $\comm{q}{p}$. Now the time evolution operator can then be rewritten as 
+\begin{equation}
+    U(\tau) = e^{-i[T(p) + V(q)]\tau} = e^{-iT(p)\tau}e^{-iV(q)\tau}e^{\pm i\comm{T(p)}{V(q)}}\cdots,
+\end{equation}
+where in the last step we used the BCH theorem. However, we can observe that the terms $e^{-iT(p)\tau}$ and $e^{-iV(q)\tau}$ are of order $\tau$ while the following one is of order $\tau^2$, with all the following terms being of order even greater. Thus, in the limit where $\tau \to 0$, or equivalently for $n \to \infty$, the terms of order greater than $\tau$ are negligible. Hence,
+\begin{equation}
+    U(\tau) \simeq e^{-iT(p)\tau}e^{-iV(q)\tau}.
+\end{equation}
+Moreover, in this limit, let's compute the general term 
+\begin{equation}
+    \mybrakett{q_{j+1},t_{j+1}}{U(\tau)}{q_j,t_j} \simeq \mybrakett{q_{j+1},t_{j+1}}{e^{-iT(p)\tau}e^{-iV(q)\tau}}{q_j,t_j}.
+\end{equation}
+Since, the states $\ket{q_j,t_j}$ are position eigenstates of the potential, we can use $e^{-iV(q)\tau}\ket{q_j,t_j} = e^{-iV(q_j)}\ket{q_j,t_j}$. Thus, we remain with 
+\begin{equation}
+    \mybrakett{q_{j+1},t_{j+1}}{U(\tau)}{q_j,t_j} \simeq \mybrakett{q_{j+1},t_{j+1}}{e^{-iT(p)\tau}}{q_j,t_j}e^{-iV(q_j)\tau},
+\end{equation}
+but now the states $\ket{q_j,t_j}$ are not eigenstates of the kinetic energy, so we can not use the same trick. On the other hand, we can instead use the previous trick of inserting a completion relation into the bracket, namely 
+\begin{equation}
+    \IM = \int dp\,\ket{p}\bra{p},
+\end{equation}
+to get 
+\begin{multline}
+    \mybrakett{q_{j+1},t_{j+1}}{e^{-iT(p)\tau}}{q_j,t_j}e^{-iV(q_j)\tau} = \\ 
+    = \int dp_j \mybrakett{q_{j + 1},t_{j + 1}}{e^{ip^2/2m}}{p_j}\mybraket{p_j}{q_j,t_j}e^{-iV(q_j)}.
+\end{multline}
+Now we can use the property of the eigenstates, so for a generic term we obtain 
+\begin{equation}
+    \mybrakett{q_{j+1},t_{j+1}}{U(\tau)}{q_j,t_j} = \int dp_j\,e^{-i[p^2/2m + V(q)]\tau}e^{2ip_j(q_{j + 1} - q_j)}.
+\end{equation}
+Following this process for every term results in the relation 
+\begin{multline}
+    \mybrakett{q_f,t_f}{U(t_f - t_i)}{q_i,t_i} \simeq \\ \simeq \prod_{j=1}^n\int dq_j\int dp_j\,\exp{\bigg\{-i\sum_{n=0}^\infty \bigg[\frac{p_j^2}{2m} + V(q_j)\bigg]\tau + ip_j (q_{j + 1} - q_j)\bigg\}}
+\end{multline}
+Moreover, multiplying the last term of the exponent with $\tau/\tau$ and using the definition $\dot{q} = (q_{j + 1} - q_j)/\tau$, we obtain 
+\begin{multline}
+    \mybrakett{q_f,t_f}{U(t_f - t_i)}{q_i,t_i} \simeq \\ \simeq \underset{\substack{q(t_f) = q_f \\ q(t_i) = q_i}}{\int}\bigg(\prod_{j=1}^n dq_j dp_j\bigg)\exp{\bigg\{-\int^{t_f}_{t_i}dt\,\bigg[\frac{p^2}{2m} + V(q)\bigg] - p\dot{q}\bigg\}}.
+\end{multline}
+Noting that on $dp$ we have a Gaussian integral and completing the square, at the end of the day, we arrive at 
+\begin{equation}
+    \begin{split}
+        \mybrakett{q_f,t_f}{U(t_f - t_i)}{q_i,t_i} &= \underset{\substack{q(t_f) = q_f \\ q(t_i) = q_i}}{\int} \pathd q\,\exp{\bigg\{i\int^{t_f}_{t_i}dt\,\bigg[\frac{1}{2}m^2\dot{q}^2 - V(q)\bigg]\bigg\}} \\
+        &= \int \pathd q\,e^{iS/\hbar},
+    \end{split}
+\end{equation}
+where $\pathd q$ is the measure of the \emph{path integral}, and where identified the action 
+\begin{equation}
+    S = \int^{t_f}_{t_i}dt\,\bigg[\frac{1}{2}m^2\dot{q}^2 - V(q)\bigg].
+\end{equation}
+In QM, the trajectory is not a well-defined concept: the particle simultaneously follows all the possible trajectories each with weight $e^{iS/\hbar}$. To retrieve Classical Mechanics, we need to send $\hbar \to 0$. In fact, more generally we have 
+\begin{equation}
+    \int dx\,e^{if(x)/\Lambda} \simeq e^{if(x_0)/\Lambda}\int dx\,e^{[if''(x_0)/\Lambda](x - x_0)^2},
+\end{equation}
+with $x_0$ a point such that $f'(x_0) = 0$. The dominant term then, for $\Lambda \to 0$, is $e^{if(x_0)/\Lambda}$. Hence, the classical solution corresponds to the one that extremises the action $S$, and it is the one that one gets from the dominant term when $\hbar \to 0$. 
+
+Suppose now that we want to compute the probability
+\begin{equation}
+    \mybrakett{q_f,t_f}{\TO{q(t_a)q(t_b)}}{q_i,t_i},
+\end{equation}
+where, without loss of generality, we can assume that $t_a > t_b$, so that $\TO{q(t_a)q(t_b)} = q(t_a)q(t_b)$. By following the same process previously shown, we will arrive at 
+\begin{equation}
+    \int \pathd q\,e^{iS/\hbar}q(t_a)q(t_b),
+\end{equation}
+which holds even if $t_b > t_a$. Hence, more generally, we have 
+\begin{equation}
+    \underset{\substack{q(t_f) = q_f \\ q(t_i) = q_i}}{\int} \pathd q\,e^{iS}q(t_1)\cdots q(t_n) = \mybrakett{q_f,t_f}{\TO{q(t_1)\cdots q(t_n)}}{q_i,t_i}.
+\end{equation}
 ...
 
 \section{Gaussian integrals}
@@ -73,7 +174,7 @@ Previously, we defined in Quantum Mechanic a new quantization scheme involving t
 \begin{equation}
     \PF = \int \pathd q\,e^{iS},\quad S = \intR dt\,\bigg[\frac{1}{2}m\dot{q}^2 - V(q)\bigg].
 \end{equation}
-We now generalize to Quantum Field Theory (QFT) by ``promoting'' the $q$ operators to fields $\phi(x)$. Thus, the action becomes 
+We now generalize to QFT by ``promoting'' the $q$ operators to fields $\phi(x)$. Thus, the action becomes 
 \begin{equation}
     S = \int d^4x\,\frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2],
 \end{equation}
@@ -94,11 +195,11 @@ with an added source term dependent of $J(x)\phi(x)$. This definition obviously 
 \begin{equation}
     S = \int d^4x\,\frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2 + J(x)\phi(x)].
 \end{equation}
-To derive the equations of motion (EOMs), we nedd to compute the Euler-Lagrange equations 
+To derive the equations of motion (EOMs), we need to compute the Euler-Lagrange equations 
 \begin{equation}
     \p_\mu\bigg(\frac{\delta\Lag}{\delta(\p_\mu\phi)}\bigg) - \frac{\delta\Lag}{\delta\phi} = 0,
 \end{equation}
-where the Lagrangian is of course the integranf of the previous action, namely
+where the Lagrangian is of course the integrand of the previous action, namely
 \begin{equation}
     \Lag = \frac{1}{2}[\p_\mu\phi(x)\p^\mu\phi(x) - m^2\phi(x)^2 + J(x)\phi(x)].
 \end{equation}
@@ -106,14 +207,14 @@ The computation results in
 \begin{equation}
     (\square + m^2)\phi(x) = J(x),\quad \square \equiv \p_\mu\p^\mu.
 \end{equation}
-This is precisely the Klein-Gordon equation when we set $J(x) = 0$, also for this reason it is clear wy $J(x)$ is called a source term. 
+This is precisely the Klein-Gordon equation when we set $J(x) = 0$, also for this reason it is clear we $J(x)$ is called a source term. 
 \begin{notz}
     To make the notation a bit lighter, we can use $\vmedio{J\phi}_x =\int d^4x\,J(x)\phi(x)$. More generally, we set 
     \begin{equation}
         \vmedio{(\cdots)}_{xy\cdots z} \equiv \bigg(\int d^4x\int d^4y\,\cdots\int d^4z\bigg)\,(\cdots).
     \end{equation}
 \end{notz}
-For the ordinary derivative $\p_i$ we have the property $\p_ix^j = \delta^j_i$. In a similar fashion, for the functional derivative holds the property
+For the ordinary derivative $\p_i$ we have the property $\p_ix^j = \delta^j_i$. Similarly, for the functional derivative holds the property
 \begin{equation}
     \frac{\delta\phi(y)}{\delta\phi(x)} = \delta^4(x - y).
 \end{equation}
@@ -176,7 +277,7 @@ thus getting
 \begin{equation}
     S_0 + \vmedio{J\phi}_x = \frac{1}{2}\int\frac{d^4k}{(2\pi)^4}\,\{\t{\phi}(-k)(k^2 - m^2)\t{\phi}(k) - \t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\},
 \end{equation}
-where since the translation \eqref{eq: field shift} has a unitary Jacobia, the integral's measure does not change. Therefore
+where since the translation \eqref{eq: field shift} has a unitary Jacobian, the integral's measure does not change. Therefore,
 \begin{equation}
     \begin{split}
         \PF_0[J] &= \int \pathd\phi\,\exp{\bigg\{\frac{i}{2}\int \frac{d^4k}{(2\pi)^4}\t{\phi}(-k)(k^2 - m^2)\t{\phi}(k)\bigg\}} \\
@@ -208,6 +309,39 @@ Therefore, $\PF_0[J]$ becomes
 Renormalizing with $\norm$, we obtain
 \begin{equation}
     \begin{split}
-        ...
+        \PF_0[J] &= \frac{1}{\norm}\int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)} \\
+        &= \exp{\bigg\{-\frac{i}{2}\int\frac{d^4k}{(2\pi)^4}\,\t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\bigg\}} \\
+        &= \exp{\bigg\{-\frac{1}{2}\int d^4x\int d^4y\,J(x)\bigg(\int\frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(x - y)}}{k^2 - m^2}\bigg)J(y)\bigg\}},
     \end{split}
+\end{equation}
+where the term in the round parentheses can be identified to be the \emph{Feynman propagator}
+\begin{eqnarray}
+    \Delta_{\rem{F}}(x - y) = \int\frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(x - y)}}{k^2 - m^2}.
+\end{eqnarray}
+\begin{notz}
+    More often that not, the Feynman propagator will be denoted as $\Delta_{\rem{F}}(x - y) \equiv \Delta (x - y)$, dropping the \emph{F} subscript. 
+\end{notz}
+Using this latter relation and the shorthand notation for the integrals, we obtain 
+\begin{equation}
+    \PF_0[J] = \exp{\bigg\{-\frac{1}{2}\vmedio{J(x)\Delta(x - y)J(y)}_{xy}\bigg\}}.
+\end{equation}
+To be a bit more precise, the integral that defines the free partition function is not really a Gaussian integral since the exponent does not behave properly, especially when sending $J(x) = 0$ it oscillates really quickly, making the integral to not converge. Therefore, to regain some sort of convergence, we add a convergence term $i\epsilon$ in the exponent, namely 
+\begin{equation}
+    \PF_0[J] = \frac{1}{\norm}\int \pathd\phi\,\exp{\bigg\{i\int d^4x\,\bigg(\frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}(m^2 - i\epsilon)\phi^2 + J\phi\bigg)\bigg\}},
+\end{equation}
+also the Feynman propagator's definition becomes  
+\begin{equation}
+    \Delta_{\rem{F}}(x - y) = \int\frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(x - y)}}{k^2 - m^2 + i\epsilon}.
+\end{equation}
+However, the proper way to do this is by a \emph{Wick rotation}, that is setting $\tau = \pm it$, where the sing of this rotation is yet to be decided. Either way, the idea consist in the fact that a Wick rotation implies sending $\eta_{\mu\nu} \mapsto -\delta_{\mu\nu}$, in other words the metric becomes Euclidean, so 
+\begin{equation}
+    ds^2 = dt^2 - d\v{x}^2 = -(dt^2 + d\v{x}^2),
+\end{equation}
+where the overall minus sign appears because of the choice for the Minkowski metric $\eta_{\mu\nu} = \diag{(+1,-1,-1,-1)}$, using the other convention would have yielded to the standard Euclidean metric. In this way, we have 
+\begin{equation}
+    \frac{i}{2}\vmedio{\p_\mu\phi\p^\mu\phi - m^2\phi^2}_x \overset{\tau = \pm it}{\longmapsto} -i(\mp i)\int d^4x_{\rem{E}}\,\frac{1}{2}(\p_\mu\phi\p^\mu\phi - m^2\phi^2).
+\end{equation}
+Therefore, the Euclidean free partition function can be written as 
+\begin{equation}
+    \PF^{\rem{E}}_0[J] = \int \pathd\phi\,\exp{\{-(S_\rem{E} + \vmedio{J\phi}_{x_\rem{E}})\}}.
 \end{equation}
