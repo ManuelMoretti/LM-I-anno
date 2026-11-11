@@ -100,14 +100,31 @@ which holds even if $t_b > t_a$. Hence, more generally, we have
 \begin{equation}
     \underset{\substack{q(t_f) = q_f \\ q(t_i) = q_i}}{\int} \pathd q\,e^{iS}q(t_1)\cdots q(t_n) = \mybrakett{q_f,t_f}{\TO{q(t_1)\cdots q(t_n)}}{q_i,t_i}.
 \end{equation}
-...
 
-\section{Gaussian integrals}
-We define the generating functional of all the momenta of the Gaussian as 
+\section{Gaussian momenta generating functional}
+Now we discuss how to compute an important quantity that appears in QFT. The $n$th momentum of the Gaussian is defined as the integral
 \begin{equation}
+\label{eq: nth momenta of the Gaussian}
+    \intR dx\,e^{-Ax^2}x^n.
+\end{equation}
+Clearly, when $n$ is odd the integral is zero, instead when $n$ is even the result is non-trivial. To compute such integrals, we usually make the change of variables $Ax^2 \equiv t$, and we use the $\Gamma$ function. However, there is another way. Consider the integral 
+\begin{equation}
+    I(t) = \intR dx\,e^{-Ax^2 - xt}
+\end{equation}
+which is just a ``deformed'' Gaussian integral with a \emph{source term} $xt$. The main thing to observe is that $I(t)$ can be used to compute the momenta of the Gaussian through its derivatives, for example the first momenta is given by
+\begin{equation}
+    \intR dx\,e^{-Ax^2}x = -\frac{d}{dt}I(t)\bigg|_{t = 0}.
+\end{equation}
+In general, the $n$th momenta in \eqref{eq: nth momenta of the Gaussian} can be computed as 
+\begin{equation}
+    \intR dx\,e^{-Ax^2}x^n = \bigg(-\frac{d}{dt}\bigg)^nI(t)\bigg|_{t = 0}.
+\end{equation}
+Therefore, we define the generating functional of all the momenta of the Gaussian as 
+\begin{equation}
+\label{eq: generating functional of the Gaussian momenta}
     I(t) = \frac{\intR dx\,e^{-Ax^2 - xt}}{\intR dx\,e^{-Ax^2}},
 \end{equation}
-such that, when expanding in Taylor series, we have 
+where we have added a normalization such that $I(t = 0) = 1$. When we expand in Taylor series, we have 
 \begin{equation}
     I(t) = \sum_{n=0}^\infty M_n(A)\frac{(-t)^n}{n!},
 \end{equation}
@@ -115,15 +132,19 @@ where the coefficients $M_n(A)$, by definition, are
 \begin{equation}
     M_n(A) = \bigg(-\frac{d}{dt}\bigg)^nI(t)\bigg|_{t = 0}.
 \end{equation}
-Consider now the exponent in $I(t)$ expression and complete the square using 
+Consider now the exponent in \eqref{eq: generating functional of the Gaussian momenta} and complete the square using 
 \begin{equation}
-    Ax^2 + xt = A\bigg(a + \frac{t}{2A}\bigg)^2 - \frac{t^2}{4A}.
+    \begin{split}
+        I(t) &= \intR dx\,e^{-Ax^2 - xt}\\
+        &= \intR dx\,\exp{\bigg\{-A\bigg[x^2 + \frac{tx}{A} + \bigg(\frac{t}{2A}\bigg)^2\bigg] + A\bigg(\frac{t}{2A}\bigg)^2\bigg\}} \\
+        &= \intR dx\,\exp{\bigg\{-A\bigg(x + \frac{t}{2A}\bigg)^2 + A\bigg(\frac{t}{2A}\bigg)^2\bigg\}},
+    \end{split} 
 \end{equation}
 In this way, we get 
 \begin{equation}
-    I(t) = \frac{\intR dx\,e^{-A(a + t/4A)^2 + t^2/4A}}{\intR dx\,e^{-Ax^2}} = e^{t^2/4A}.
+    I(t) = \frac{1}{\norm}\intR dx\,e^{-A(a + t/4A)^2 + t^2/4A} = e^{t^2/4A}, \quad \norm \equiv \intR dx\,e^{-Ax^2},
 \end{equation}
-With this simple expression for the generating functional we can compute some momenta; for example, the first one is 
+where we have denoted the normalization as $\norm$. With this simple expression for the generating functional we can compute some momenta; for example, the first one is 
 \begin{equation}
     M_1 = -\frac{d}{dt}I(t)\bigg|_{t = 0} = -\frac{t}{2A}e^{t^2/4A}\bigg|_{t = 0} = 0,
 \end{equation}
@@ -137,9 +158,9 @@ Obviously, one can use the previous momenta to compute the following one, for ex
 \end{equation}
 Now suppose that the generating functional is instead defined as 
 \begin{equation}
-    I(t) = \frac{1}{\norm}\intR dx\,e^{-Ax^2 + f(x)},\quad \norm = \intR dx\,e^{-Ax^2},
+    I(t) = \frac{1}{\norm}\intR dx\,e^{-Ax^2 + f(x)},
 \end{equation}
-where now in place of $xt$ we have a general function $f(x)$, also we have defined the normalization $\norm$. Now through Taylor expansion we see that 
+where now in place of $xt$ we have a general function $f(x)$. Now through Taylor expansion we see that 
 \begin{equation}
     e^{f(x)} = \sum_{n=0}^\infty c_n x^n,
 \end{equation}
@@ -170,6 +191,7 @@ where $\alpha \in \bb{R}$. In particular, if $\alpha \ll 1$, we can use perturba
     \end{split}
 \end{equation}
 
+\subsection{Partition function}
 Previously, we defined in Quantum Mechanic a new quantization scheme involving the partition function 
 \begin{equation}
     \PF = \int \pathd q\,e^{iS},\quad S = \intR dt\,\bigg[\frac{1}{2}m\dot{q}^2 - V(q)\bigg].
