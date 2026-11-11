@@ -191,7 +191,7 @@ where $\alpha \in \bb{R}$. In particular, if $\alpha \ll 1$, we can use perturba
     \end{split}
 \end{equation}
 
-\subsection{Partition function}
+\section{Partition function}
 Previously, we defined in Quantum Mechanic a new quantization scheme involving the partition function 
 \begin{equation}
     \PF = \int \pathd q\,e^{iS},\quad S = \intR dt\,\bigg[\frac{1}{2}m\dot{q}^2 - V(q)\bigg].
@@ -249,12 +249,14 @@ Knowing this, we can see that
 \end{equation}
 Setting $J(x) = 0$ at the end of the computation returns exactly what we originally wanted to compute. Therefore, we can easily see that 
 \begin{equation}
-    \mybrakett{0}{\TO{\phi(x_1)\cdots\phi(x_n)}}{0} = \prod_{i=1}^n\bigg(-i\frac{\delta}{\delta J(x^i)}\bigg)\PF[J]\bigg|_{J = 0}.
+    \mybrakett{0}{\TO{\phi(x_1)\cdots\phi(x_n)}}{0} = \prod_{i=1}^n\bigg(-i\frac{\delta}{\delta J(x_i)}\bigg)\PF[J]\bigg|_{J = 0}.
 \end{equation}
 The partition function $\PF[J]$ can then be seen as the generating functional of the Green functions, namely 
 \begin{equation}
-    \PF[J] = \sum_{n = 0}^\infty G_n(x_1,\dots,x_n)\frac{J(x_1)\cdot J(x_n)}{n!}.
+    \PF[J] = \sum_{n = 0}^\infty \frac{i^n}{n!}\vmedio{G_n(x_1,\dots,x_n)J(x_1)\cdots J(x_n)}_{x_1\cdots x_n}.
 \end{equation}
+
+\subsection{Free partition function}
 All of this is very useful if we can compute the partition function. Let's try to do it for the free field. For this purpose we indicate the partition function as $\PF_0[J]$. Focusing on the exponent, we have 
 \begin{equation}
     S_0 + \vmedio{J\phi}_x = \int d^4x\,\bigg(\frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 + J\phi\bigg).
@@ -308,7 +310,7 @@ where since the translation \eqref{eq: field shift} has a unitary Jacobian, the 
 \end{equation}
 Going back to coordinate space from momentum space through the anti-Fourier transforms
 \begin{equation}
-    \t{phi}(k) = \int d^4x\,e^{-ikx}\phi(x),\quad J(x) = \int d^4x\,e^{-ikx}J(x),
+    \t{\phi}(k) = \int d^4x\,e^{-ikx}\phi(x),\quad J(x) = \int d^4x\,e^{-ikx}J(x),
 \end{equation}
 we get the exponent 
 \begin{multline}
@@ -328,7 +330,7 @@ Therefore, $\PF_0[J]$ becomes
 \begin{equation}
     \PF_0[J] = \int \pathd\phi\,e^{iS_0} \exp{\bigg\{-\frac{i}{2}\int \frac{d^4k}{(2\pi)^4} \t{J}(-k)(k^2 - m^2)^{-1}\t{J}(k)\bigg\}}.
 \end{equation}
-Renormalizing with $\norm$, we obtain
+Including the normalization $\norm \equiv \int \pathd\phi\,e^{iS_0}$ such that $\PF_0[J = 0] = 1$, we obtain
 \begin{equation}
     \begin{split}
         \PF_0[J] &= \frac{1}{\norm}\int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)} \\
@@ -341,7 +343,7 @@ where the term in the round parentheses can be identified to be the \emph{Feynma
     \Delta_{\rem{F}}(x - y) = \int\frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(x - y)}}{k^2 - m^2}.
 \end{eqnarray}
 \begin{notz}
-    More often that not, the Feynman propagator will be denoted as $\Delta_{\rem{F}}(x - y) \equiv \Delta (x - y)$, dropping the \emph{F} subscript. 
+    More often than not, the Feynman propagator will be denoted as $\Delta_{\rem{F}}(x - y) \equiv \Delta (x - y)$, dropping the \emph{F} subscript. 
 \end{notz}
 Using this latter relation and the shorthand notation for the integrals, we obtain 
 \begin{equation}
@@ -355,7 +357,7 @@ also the Feynman propagator's definition becomes
 \begin{equation}
     \Delta_{\rem{F}}(x - y) = \int\frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(x - y)}}{k^2 - m^2 + i\epsilon}.
 \end{equation}
-However, the proper way to do this is by a \emph{Wick rotation}, that is setting $\tau = \pm it$, where the sing of this rotation is yet to be decided. Either way, the idea consist in the fact that a Wick rotation implies sending $\eta_{\mu\nu} \mapsto -\delta_{\mu\nu}$, in other words the metric becomes Euclidean, so 
+However, the proper way to do this is by a \emph{Wick rotation}, that is setting $\tau = \pm it$, where the sign of this rotation is yet to be decided. Either way, the idea consist in the fact that a Wick rotation implies sending $\eta_{\mu\nu} \mapsto -\delta_{\mu\nu}$, in other words the metric becomes Euclidean, so 
 \begin{equation}
     ds^2 = dt^2 - d\v{x}^2 = -(dt^2 + d\v{x}^2),
 \end{equation}
@@ -366,4 +368,174 @@ where the overall minus sign appears because of the choice for the Minkowski met
 Therefore, the Euclidean free partition function can be written as 
 \begin{equation}
     \PF^{\rem{E}}_0[J] = \int \pathd\phi\,\exp{\{-(S_\rem{E} + \vmedio{J\phi}_{x_\rem{E}})\}}.
+\end{equation}
+
+Before continuing to the interacting theory, we just summarize the main result obtained for the free partition function and discuss some examples of Green's functions. So far we have found that 
+\begin{equation}
+    \begin{split}
+        \PF_0[J] &= \frac{\int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)}}{\int \pathd\phi\,e^{iS_0}} \\
+        &= \exp{\bigg\{-\frac{1}{2}\vmedio{J(x)\Delta(x - y)J(y)}_{xy}\bigg\}} \\
+        &= \sum_{n = 0}^\infty \frac{i^n}{n!}\vmedio{G_n(x_1,\dots,x_n)J(x_1)\cdots J(x_n)}_{x_1\cdots x_n},
+    \end{split}
+\end{equation}
+where 
+\begin{equation}
+    G_n(x_1,\dots,x_n) = (-i)^n\bigg(\frac{\delta^n}{\delta J(x_1)\cdots \delta J(x_n)}\bigg)\PF_0[J]\bigg|_{J = 0}.
+\end{equation}
+\begin{notz}
+    In the following, we shall often use $\phi(x_i) \equiv \phi_i$, $J(x_i) \equiv J_i$, $\Delta_{\rem{F}}(x - y) \equiv \Delta_{xy}$, and $\Delta_{\rem{F}}(x_i - x_j) \equiv \Delta_{ij}$ to make the notation a bit lighter.
+\end{notz}
+\begin{ex}[some Green's functions]
+    We compute the first two Green's functions pretty easily. The first one is 
+    \begin{equation}
+        \begin{split}
+            G_1(x_1) = -i\frac{\delta}{\delta J_1}\PF_0[J]\bigg|_{J = 0} &= (-i)\bigg(-\frac{1}{2}\bigg)\frac{\delta}{\delta J_1}(\vmedio{J(x)\Delta_{xy}J(y)}_{xy})\PF_0[J]\bigg|_{J = 0} \\
+            &= i\bigvmedio{\frac{\delta J(x)}{\delta J_1}\Delta_{xy}J(y)}_{xy}\PF_0[J]\bigg|_{J = 0} \\
+            &= i\vmedio{\Delta_{1y}J(y)}_{y}\PF_0[J]\bigg|_{J = 0} \\
+            &= 0,
+        \end{split}
+    \end{equation}
+    as we expect for odd momenta. On the other side, the 2-point Green's function, using the result obtained for $G_1(x_1)$, is 
+    \begin{equation}
+        \begin{split}
+            G_2(x_1,x_2) &= -\frac{\delta^2}{\delta J_1\delta J_2}\PF_0[J]\bigg|_{J = 0} \\
+            &= -\frac{\delta}{\delta J_2}(\vmedio{\Delta_{xy}J(y)}_y\PF_0[J])\bigg|_{J = 0} \\
+            &= -\Delta_{12}\PF_0[J]|_{J = 0} - \vmedio{\Delta_{1y}J(y)}_{y}\frac{\delta}{\delta J_2}\PF_0[J]\bigg|_{J = 0} \\
+            &= -\Delta_{12}\PF_0[J]|_{J = 0} + \vmedio{\Delta_{1y}J(y)}_{y}\vmedio{\Delta_{2w}J(w)}_{w}\PF_0[J]|_{J = 0} \\
+            &= -\Delta(x_1 - x_2),
+        \end{split}
+    \end{equation}
+    so it corresponds to the Feynman propagator. 
+\end{ex}
+
+Another important Green's function, other than the ones in the example, is the 4-point Green's function $G_4(x_1,x_2,x_3,x_4)$. This is given by 
+\begin{equation}
+    \begin{split}
+        G_4(x_1,x_2,x_3,x_4) &= \frac{\delta^4}{\delta J_1\delta J_2\delta J_3\delta J_4}\PF_0[J]\bigg|_{J = 0} \\
+        &= \frac{\delta^3}{\delta J_1\delta J_2\delta J_3}(-\vmedio{\Delta_{4y}J_y}_{y})\PF_0[J] \\
+        &= \frac{\delta^2}{\delta J_1\delta J_2}(-\Delta_{43} + \vmedio{\Delta_{4y}J_y}_y\vmedio{\Delta_{3w}J_w}_w)\PF_0[J] \\
+        &= \frac{\delta}{\delta J_1}(\Delta_{43}\vmedio{\Delta_{2y}J_y}_y + \Delta_{42}\vmedio{\Delta_{3w}J_w}_w + \vmedio{\Delta_{4y}J_y}_y\Delta_{32} \\
+        &- \vmedio{\Delta_{4y}J_y}_y\vmedio{\Delta_{3w}J_w}_w\vmedio{\Delta_{2z}J_z}_z)\PF_0[J] \\
+        &= [\Delta_{43}\Delta_{21} - \Delta_{43}\vmedio{\Delta_{2y}J_y}_y\vmedio{\Delta_{1w}J_w}_w + \Delta_{42}\Delta_{31} \\
+        &- \Delta_{42}\vmedio{\Delta_{3w}J_w}_w\vmedio{\Delta_{1y}J_y}_y + \Delta_{32}\Delta_{41} \\
+        &- \Delta_{32}\vmedio{\Delta_{4y}J_y}_y\vmedio{\Delta_{1w}J_w}_w - \Delta_{41}\vmedio{\Delta_{3w}J_w}_w\vmedio{\Delta_{2y}J_y}_y \\
+        &- \vmedio{\Delta_{4y}J_y}_y\Delta_{31}\vmedio{\Delta_{2w}J_w}_w - \vmedio{\Delta_{4y}J_y}_y\vmedio{\Delta_{3w}J_w}_w\Delta_{21} \\
+        &+ \vmedio{\Delta_{4y}J_y}_y\vmedio{\Delta_{3w}J_w}_w\vmedio{\Delta_{2z}J_z}_z\vmedio{\Delta_{1k}J_k}_k ]|_{J = 0} \\
+        &= \Delta_{43}\Delta_{21} + \Delta_{42}\Delta_{31} + \Delta_{41}\Delta_{32},
+    \end{split}
+\end{equation}
+where in the last step we set $J = 0$, which makes the majority of the terms to vanish. 
+\begin{notz}
+    In the following, the condition $(\cdots)|_{J = 0}$ is understood during the intermediate steps of the computations, so we explicitly write it usually at the begging and at the end of them. 
+\end{notz}
+
+The latter result for the 4-point function is really important since it shows us that Wick's theorem is automatically included at the end of the computation. In fact, if we compute the time ordered product of four fields, we get 
+\begin{equation}
+    \begin{split}
+        \mybrakett{0}{\TO{\phi_1\phi_2\phi_3\phi_4}}{0} &= \bo (\NO{\phi_1\phi_2\phi_3\phi_4} + \NO{\wick{\c1 \phi_1 \c1 \phi_2\phi_3\phi_4}} + \NO{\wick{\c1 \phi_1\phi_2 \c1 \phi_3\phi_4}} \\
+        &+ \NO{\wick{\c1 \phi_1\phi_2\phi_3 \c1 \phi_4}} + \NO{\wick{\phi_1 \c1 \phi_2 \c1 \phi_3\phi_4}} + \NO{\wick{\phi_1 \c1 \phi_2\phi_3 \c1 \phi_4}} \\
+        &+ \NO{\wick{\phi_1\phi_2 \c1 \phi_3 \c1 \phi_4}} + \NO{\wick{\c1 \phi_1 \c1 \phi_2 \c1 \phi_3 \c1 \phi_4}} + \NO{\wick{\c1 \phi_1 \c2 \phi_2 \c1 \phi_3 \c2 \phi_4}} \\
+        &+ \NO{\wick{\c1 \phi_1 \c2 \phi_2 \c2 \phi_3 \c1 \phi_4}}) \ko \\
+        &= \mybrakett{0}{\NO{\wick{\c1 \phi_1 \c1 \phi_2 \c1 \phi_3 \c1 \phi_4}} + \NO{\wick{\c1 \phi_1 \c2 \phi_2 \c1 \phi_3 \c2 \phi_4}} + \NO{\wick{\c1 \phi_1 \c2 \phi_2 \c2 \phi_3 \c1 \phi_4}}}{0},
+    \end{split}
+\end{equation}
+where $\NO{(\cdots)}$ is the \emph{normal ordering operator}. Moreover, one can also represent the Green's functions in a pictorial way; for example, $G_2(x_1,x_2)$ and $G_4(x_1,x_2,x_3,x_4)$ can be expressed as the following diagrams
+\begin{equation}
+    +FD.
+\end{equation}
+By looking at those, we can see that all the diagrams, expect the one for the 2-point function, are \emph{disconnected diagrams}\footnote{Here with ``disconnected'' we refer to all the diagrams that to be drawn require to lift the pen from the paper.}. This means that the free partition function is the generator of all the diagrams, both connected and disconnected. However, we are interested in connected diagrams for the most part, so we now ask ourselves if there is a way to get only the connected diagrams, while removing the disconnected ones. For this purpose, we define 
+\begin{equation}
+    \PF[J] = e^{-\HE[J]},
+\end{equation}
+where the functional
+\begin{equation}
+    \HE[J] = \sum_{n=0}^\infty\frac{1}{n!}\vmedio{G^{\rem{c}}_n(x_1,\dots,x_n)J_1\cdots J_n}_{x_1\cdots x_n}
+\end{equation}
+is the functional that generates all the connected diagrams. With this, it follows that 
+\begin{equation}
+    G^{\rem{c}}(x_1,\dots,x_n) = \frac{\delta^n}{\delta J_1\cdots \delta J_n}\HE[J].
+\end{equation}
+For the free theory, so using $\PF_0[J]$ and defining $\HE_0[J]$, the exact result is 
+\begin{equation}
+    \HE_0[J] = \frac{i}{2}\vmedio{J_x\Delta_{xy}J_y}_{xy},
+\end{equation}
+which describes only the propagation between $x_1$ and $x_2$. Thus, for the free theory, we have 
+\begin{equation}
+    G^{\rem{c}}(x_1,\dots,x_n) \equiv G_2^{\rem{c}}(x_1,x_2) = \Delta_{21}.
+\end{equation}
+
+\subsection{Interacting partition function}
+To include some sort of interaction in our theory, we need to introduce a potential $V(\phi)$ in the free action, namely we need to use 
+\begin{equation}
+    S = \int d^4x\,\bigg[\frac{1}{2}\p_\mu\p^\mu\phi - \frac{1}{2}m^2\phi^2 + V(\phi)\bigg] = S_0 - \int d^4x\,V(\phi).
+\end{equation}
+Then, the interacting partition function is 
+\begin{equation}
+    \PF[J] = \frac{\int \pathd\phi\,e^{i(S + \vmedio{J\phi}_x)}}{\int \pathd\phi\,e^{iS_0}} = \frac{\int \pathd\phi\,e^{-i\vmedio{V(\phi)}_x}e^{i(S_0 + \vmedio{J\phi}_x)}}{\int \pathd\phi\,e^{iS_0}}.
+\end{equation}
+As we did before, we can expand in Taylor series the exponential of the potential as $e^{-i\vmedio{V(\phi)}_x} = \sum_{n=0}^\infty c_n\phi^n$, so that the partition function becomes 
+\begin{equation}
+    \begin{split}
+        \PF[J] &= \frac{1}{\norm}\sum_{n=0}^\infty c_n\int \pathd\phi\,\phi^n e^{i(S_0 + \vmedio{J\phi}_x)} \\ &= \frac{1}{\norm}\sum_{n=0}^\infty c_n\int \pathd\phi\,\bigg(-i\frac{\delta}{\delta J}\bigg)^ne^{i(S_0 + \vmedio{J\phi}_x)},
+    \end{split}
+\end{equation}
+then, by commuting the path integral with the functional derivative and using the definition of the exponential's Taylor series, we obtain 
+\begin{equation}
+    \begin{split}
+        \PF[J] &= \frac{1}{\norm}\exp{\bigg\{\bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J}\bigg)}_x\bigg\}}\int \pathd\phi\, e^{i(S_0 + \vmedio{J\phi}_x)} \\
+        &= \frac{1}{\norm}\exp{\bigg\{\bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J}\bigg)}_x\bigg\}}\PF_0[J].
+    \end{split}
+\end{equation}
+In this way, the functional integral can be computed through perturbation theory if the potential is such that $V(\phi) := \lambda\h{V}(\phi)$ with $\lambda \ll 1$. In particular, denoting for simplicity 
+\begin{equation}
+    \delta \equiv \exp{\bigg\{\bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J}\bigg)}_x\bigg\}},
+\end{equation}
+so that $\PF[J] = \delta \PF_0[J]$, we can write 
+\begin{equation}
+    \begin{split}
+        \delta \PF_0[J] = \delta e^{-\HE_0[J]} &= e^{-\HE_0[J]}e^{\HE_0[J]}\delta e^{-\HE_0[J]} \\
+        &= e^{-\HE_0[J]}e^{\HE_0[J]}(1 + \delta - 1)e^{-\HE_0[J]} \\
+        &= e^{-\HE_0[J]} + e^{\HE_0[J]}(\delta - 1)e^{-\HE_0[J]},
+    \end{split}
+\end{equation}
+therefore
+\begin{equation}
+    \begin{split}
+        -\ln{\PF[J]} = \HE[J] &= \HE_0[J] - \ln{\{e^{\HE_0[J]}[1 + (\delta - 1)]e^{-\HE_0[J]}\}} \\
+        &= -\ln{[1 + e^{\HE_0[J]}(\delta - 1)e^{\HE_0[J]}]}.
+    \end{split}
+\end{equation}
+Now denoting $A \equiv e^{\HE_0[J]}(\delta - 1)e^{-\HE_0[J]}$, we can expand the logarithm in Taylor series 
+\begin{equation}
+    \ln{(1 + A)} = A - \frac{A^2}{2} + \frac{A^3}{3!} + \cdots,
+\end{equation}
+where $A$ can itself be expanded as 
+\begin{equation}
+    A = e^{\HE_0[J]}(\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots)e^{-\HE_0[J]},
+\end{equation}
+with 
+\begin{equation}
+    \alpha_i \equiv \bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J}\bigg)}_x.
+\end{equation}
+Putting all together, we have 
+\begin{equation}
+    \begin{split}
+        \HE[J] &= \HE_0[J] - (\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots) \\
+        &+ \frac{1}{2}(\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots)^2 \\
+        &+ \frac{1}{3!}(\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots)^3 \\
+        &\simeq \HE_0[J] - \lambda\alpha_1 - \lambda^2\bigg(\alpha_2 - \frac{\alpha_1^2}{2}\bigg) - \lambda^3\bigg(\alpha_3 - \alpha_1\alpha_2 + \frac{\alpha_1^3}{3}\bigg),
+    \end{split}
+\end{equation}
+where in the last step we stopped at the third order in $\lambda$. To compute the $\alpha_i$s we need to assume, in a more precise way, the form of the potential. We choose $V(\phi) \equiv \lambda\phi^4/4$ which defines the \emph{$\phi^4$-theory}, so that, for example, $\alpha_1$ is 
+\begin{equation}
+    \alpha_1 = -\frac{i}{4!}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_xe^{-\HE_0[J]}.
+\end{equation}
+Before compute it, we can see that the partition function in this particular theory is 
+\begin{equation}
+    \begin{split}
+        \PF[J] &= \sum_{n=0}^\infty\frac{(-i)^n}{n!}\bigg(\prod_{i=1}^n\int d^4x_i\bigg)\int \pathd\phi\,\phi^4_1\cdots\phi_n^4 e^{i(S_0 + \vmedio{J\phi}_x)} \\
+        &= \sum_{n=0}^\infty\frac{(-i)^n}{n!}\bigg(\prod_{i=1}^n\int d^4x_i\bigg)\frac{\delta^4}{\delta J_1^4}\cdots\frac{\delta^4}{\delta J_n^4}\int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)} \\
+        &= \sum_{n=0}^\infty\frac{(-i)^n}{n!}\bigg(\prod_{i=1}^n\int d^4x_i\frac{\delta^4}{\delta J_i^4}\bigg)\int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)} \\
+        &= \exp{\bigg\{-i\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_x\bigg\}} \int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)}
+    \end{split}
 \end{equation}

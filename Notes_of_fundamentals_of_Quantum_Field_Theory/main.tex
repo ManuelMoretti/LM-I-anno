@@ -8,9 +8,9 @@
 \usepackage{stackengine}
 \usepackage{tikz}
 \usepackage{tikz-feynman}
-\tikzfeynmanset{compat=1.1.0}
+\tikzfeynmanset{compat = 1.1.0}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{compat = 1.18}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{makecell}
@@ -71,7 +71,7 @@
 % stili
 \newcommand{\bb}[1]{\mathbb{#1}}
 \renewcommand{\v}[1]{\bm{#1}}
-\renewcommand{\c}[1]{\check{#1}}
+\newcommand{\ch}[1]{\check{#1}}
 \renewcommand{\t}[1]{\tilde{#1}}
 \newcommand{\h}[1]{\hat{#1}}
 \newcommand{\hT}[1]{\hat{#1}^\dagger}
@@ -133,8 +133,10 @@
 \newcommand{\intR}{\int_{\bb{R}}}
 \newcommand{\norm}{\fan{N}}
 \newcommand{\PF}{\fan{Z}}
+\newcommand{\HE}{\fan{W}}
 \newcommand{\pathd}{\fan{D}}
 \newcommand{\TO}[1]{\fan{T}{\{#1\}}}
+\newcommand{\NO}[1]{{:}#1{:}}
 
 \title{\textbf{NOTES OF FUNDAMENTALS \\ OF QUANTUM FIELD THEORY}}
 \author{Manuel Gabriele Moretti}
