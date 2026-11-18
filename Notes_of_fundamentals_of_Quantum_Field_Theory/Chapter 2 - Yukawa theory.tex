@@ -1,0 +1,83 @@
+\chapter{Yukawa's theory}
+We can now start to look at interacting theories involving fermions. We saw that the free action is the Dirac's action in \eqref{eq: Dirac's action}. To define an interacting action starting from this one, we could consider higher order Lorentz-invariant terms in the fermionic fields, like $(\b{\psi}\psi)(\b{\psi}\psi)$ or $(\b{\psi}\gamma^\mu\psi)(\b{\psi}\gamma^\mu\psi)$. However, adding these kinds of terms will result in theories with divergences, which are not what we want to study here. Another thing we can do is to include a different type of field, always being careful to maintain Lorentz invariance. As a first interacting action, we can thus introduce a scalar field $\phi$, writing the \emph{Yukawa's action} 
+\begin{equation}
+\label{eq: Yukawa's action}
+    S_{\rem{Y}} = \int d^4x\,[\b{\psi}(i\sl{\p} - m)\psi + \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 - g\phi\b{\psi}\psi],
+\end{equation}
+which describes \emph{Yukawa's theory}. In \eqref{eq: Yukawa's action}, we can see that the first term is the Dirac's action, the second and the third one are the free action for the scalar field, while the last one is the real interactive term since it mixes the fields, which is proportional to the \emph{coupling constant} $g$, whose role is the same as $\lambda$ for the $\phi^4$ theory seen before. We can briefly look at the dimensions of the terms in \eqref{eq: Yukawa's action}, for instance, the fields have dimension $[\phi] = M$, $[\psi] = M^{3/2}$, while the coupling constant is dimensionless, namely $[g] = 1$. This latter property is crucial for a theory that does not have divergences. In fact, if we were to introduce the term $-\alpha(\b{\psi}\psi)^2$, the coupling constant $\alpha$ would have dimensions $[\alpha] = M^{-2}$, therefore the dimensionless quantity we should look at is $E^2\alpha$. However, this latter quantity clearly grows with $E$, and explodes for $E \to \infty$. This is exactly the reason why Neetonian gravity can not be quantized is the ``usual'' way that we follow for other theories. 
+
+Anyway, we shall stick to the action \eqref{eq: Yukawa's action}. The equation of motions that we can derive, let us see explicitly why the theory is an interacting one. In fact, we obtain 
+\begin{equation}
+    \begin{cases}
+        (\square + m^2)\phi = -g\phi\b{\psi}\psi \\
+        (\sl{\p} - m)\psi = -g\phi\psi
+    \end{cases},
+\end{equation}
+which are the Klein-Gordon and Dirac's equations with a right-hand side that mixes the fields, instead of being zero. 
+
+\section{Partition function of Yukawa's theory}
+Remembering what we have done before, the free partition function of Yukawa's theory can be easily written as 
+\begin{equation}
+    \begin{split}
+        \PF_0[J,\eta,\b{\eta}] &= \frac{\int \pathd\phi\pathd\psi\pathd\b{\psi}\,e^{iS_0 + i\vmedio{J\phi} + i\vmedio{\b{\psi}\eta} + i\vmedio{\psi\b{\eta}}}}{\int \pathd\phi\pathd\psi\pathd\b{\psi}\,e^{iS_0}} \\
+        &= \exp{\bigg\{-\frac{1}{2}\vmedio{J_x\Delta_{xy}J_y}_{xy}\bigg\}}\exp{\bigg\{-\frac{1}{2}\vmedio{-\b{\eta}_xS_{xy}\eta_y}_{xy}\bigg\}},
+    \end{split}
+\end{equation}
+where $S_0$ is the free part of the action \eqref{eq: Yukawa's action}, namely 
+\begin{equation}
+    S_0 = \int d^4x\,[\b{\psi}(i\sl{\p} - m)\psi + \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2].
+\end{equation}
+However, we are interested in the interacting partition function $\PF[J,\eta,\b{\eta}]$, this is 
+\begin{equation}
+    \PF[J,\eta,\b{\eta}] = \frac{1}{\norm}\int \pathd\phi\pathd\psi\pathd\b{\psi}\,e^{-\vmedio{g\phi\psi\b{\psi}}}e^{iS_0 + i\vmedio{J\phi} + i\vmedio{\b{\psi}\eta} + i\vmedio{\psi\b{\eta}}},
+\end{equation}
+where, like before, we have defined the normalization $\norm \equiv \int \pathd\phi\pathd\psi\pathd\b{\psi}\,e^{iS_0}$. We can now use perturbation theory if $g \ll 1$ to expand the interactive term, so we get 
+\begin{equation}
+    \PF[J,\eta,\b{\eta}] = \frac{1}{\norm}\sum_{n=0}^\infty\frac{(-ig)^n}{n!}\int \pathd\phi\pathd\psi\pathd\b{\psi}\,(\vmedio{\phi\b{\psi}\psi}_x)^ne^{iS_0 + i\vmedio{J\phi} + i\vmedio{\b{\psi}\eta} + i\vmedio{\psi\b{\eta}}}.
+\end{equation}
+Now, since 
+\begin{multline}
+    \int \pathd\phi\pathd\psi\pathd\b{\psi}\,\phi(x)\psi(x)\b{\psi}e^{iS_0 + i\vmedio{J\phi} + i\vmedio{\b{\psi}\eta} + i\vmedio{\psi\b{\eta}}} = \\ 
+    = -i\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}\int \pathd\phi\pathd\psi\pathd\b{\psi}\,e^{iS_0 + i\vmedio{J\phi} + i\vmedio{\b{\psi}\eta} + i\vmedio{\psi\b{\eta}}},
+\end{multline}
+the partition function can be written as 
+\begin{equation}
+    \begin{split}
+        \PF[J,\eta,\b{\eta}] &= \frac{1}{\norm}\sum_{n=0}^\infty\frac{(-ig)^n}{n!}\bigg(\bigvmedio{-i\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}_x}\bigg)^n\PF_0[J,\eta,\b{\eta}] \\
+        &= \exp{\bigg\{-ig\bigvmedio{-i\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}_x}\bigg\}}\PF_0[J,\eta,\b{\eta}],
+    \end{split}
+\end{equation}
+which up to order $g$ is 
+\begin{equation}
+    \PF[J,\eta,\b{\eta}] \simeq \bigg(1 - g\bigvmedio{\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}}_x\bigg)\PF_0[J,\eta,\b{\eta}].
+\end{equation}
+The free-energy is given by the logarithm of $\PF[J,\eta,\b{\eta}]$, namely 
+\begin{equation}
+    \HE[J,\eta,\b{\eta}] = \HE_0[J,\eta,\b{\eta}] - ge^{\HE_0}\bigvmedio{\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}}_xe^{-\HE_0},
+\end{equation}
+where the free part is 
+\begin{equation}
+    \HE_0[J,\eta,\b{\eta}] = -\frac{1}{2}\vmedio{J_x\Delta_{xy}J_y}_{xy} - \vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy},
+\end{equation}
+while the term proportional to $g$ can be computed to be 
+\begin{equation}
+    \begin{split}
+        e^{\HE_0}\bigvmedio{\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}}_xe^{-\HE_0} &= e^{\HE_0}\bigvmedio{\frac{\delta^2}{\delta J\delta \eta}(-1)\vmedio{S_{xy}\eta_y}_ye^{-\HE0}}_x \\
+        &= -e^{\HE_0}\bigvmedio{\frac{\delta}{\delta J}(-S_{xx}\vmedio{S_{xy}\eta_y}_y\vmedio{\b{\eta}S_{yx}}_y)e^{-\HE_0}}_x \\
+        &= -\vmedio{[S_{xx} + \vmedio{S_{xy}\eta_yS_{ux}}_{yu}\Delta_{xw}J_w]}_{xw} \\
+        &= \vmedio{S_{xx}\Delta_{xy}J_y}_{xy} + \vmedio{\b{\eta}_uS_{yx}S_{xy}\eta_y\Delta_{xw}J_w}_{xywu}.
+    \end{split}
+\end{equation}
+Hence, the interactive free energy is 
+\begin{equation}
+    \begin{split}
+        \HE[J,\eta,\b{\eta}] &= -\frac{1}{2}\vmedio{J_x\Delta_{xy}J_y}_{xy} - \vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy} \\
+        &- g(\vmedio{S_{xx}\Delta_{xy}J_y}_{xy} + \vmedio{\b{\eta}_uS_{yx}S_{xy}\eta_y\Delta_{xw}J_w}_{xywu})
+    \end{split}
+\end{equation}
+
+\section{Correlation functions}
+...
+
+
+

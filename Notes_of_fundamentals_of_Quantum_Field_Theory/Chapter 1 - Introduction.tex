@@ -839,5 +839,35 @@ which generates only the connected diagrams, as opposed to $\PF_0[\eta,\b{\eta}]
     G_2^{\rem{C}}(x_1,x_2) = \frac{\delta}{\delta\eta_2\delta\b{\eta}_1}\HE_0[\eta,\b{\eta}] = S_{\alpha\beta}(x_1 - x_2),
 \end{equation}
 which is the only connected Green's function, as expected for a free theory. 
-
-
+\begin{ex}
+    Consider the correlation function $\mybrakett{0}{\TO{\psi_1\psi_2\b{\psi}_3\b{\psi}_4}}{0}$. Using Wick's theorem, we have 
+    \begin{equation}
+        \begin{split}
+            \mybrakett{0}{\TO{\psi_1\psi_2\b{\psi}_3\b{\psi}_4}}{0} &= \wick{\c1 \psi_1 \c2 \psi_2 \c1 {\b{\psi}_3} \c2 {\b{\psi}_4}} + \wick{\c1 \psi_2 \c2 \psi_2 \c2 {\b{\psi}_3} \c1 {\b{\psi}_4}} \\
+            &= -\wick{\c1 \psi_1 \c1 {\b{\psi}_3} \c1 \psi_2 \c1 {\b{\psi}_4}} + \wick{\c1 \psi_1 \c1 {\b{\psi}_4} \c1 \psi_2 \c1 {\b{\psi}_3}} \\
+            &= +FD.
+        \end{split}
+    \end{equation}
+    Using functional derivatives, we have 
+    \begin{equation}
+        \begin{split}
+            \frac{(-i)^2(i)^2\delta^4}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3\delta\eta_4}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta}=0} &= \frac{1}{\norm}\frac{\delta^3}{\delta\b{\eta}_1\delta\b{\eta}_2\eta_3}\int \pathd\psi\pathd\b{\psi}\,(-i)\b{\psi}_4e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\frac{\delta^2}{\delta\b{\eta}_1\delta\b{\eta}_2}\int \pathd\psi\pathd\b{\psi}\,\b{\psi}_4\b{\psi}_3e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\frac{\delta}{\delta\b{\eta}_1}\int \pathd\psi\pathd\b{\psi}\,(i)\b{\psi}_4\b{\psi}_3\psi_2e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\int \pathd\psi\pathd\b{\psi}\,\b{\psi}_4\b{\psi}_3\psi_2\psi_1e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}|_{\eta,\b{\eta}=0} \\
+            &= \frac{1}{\norm}\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\b{\psi}_3\b{\psi}_4.
+        \end{split}
+    \end{equation}
+    However, we know what $\PF_0[\eta,\b{\eta}]$ is, therefore 
+    \begin{equation}
+        \begin{split}
+            \frac{\delta^4}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3\delta\eta_4}(e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}})\bigg|_{\eta,\b{\eta}=0} &= \frac{\delta^3}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3}(-\vmedio{\b{\eta}_xS_{xx_4}}_xe^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}}) \\
+            &= \frac{\delta^2}{\delta\b{\eta}_1\delta\b{\eta}_2}(-\vmedio{\b{\eta}_xS_{xx_4}}_x\vmedio{\b{\eta}_yS_{yx_3}}_y \\
+            &\times e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}}) \\
+            &= \frac{\delta}{\delta\b{\eta}_1}(-S_{x_2x_4}\vmedio{\eta_yS_{yx_3}}_ye^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}} \\
+            &+ \vmedio{\b{\eta}_xS_{xx_4}}_xS_{x_2x_3}e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}})\bigg|_{\eta,\b{\eta}=0} \\
+            &= -S_{x_2x_4}S_{x_1x_3} + S_{x_1x_4}S_{x_2x_3}.
+        \end{split}
+    \end{equation}
+    As we can see, we obtained exactly what we found from contracting fields and using Wick's theorem.
+\end{ex}
