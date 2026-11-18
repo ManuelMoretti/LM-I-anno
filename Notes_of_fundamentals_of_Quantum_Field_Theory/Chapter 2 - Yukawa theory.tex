@@ -42,6 +42,7 @@ Now, since
 \end{multline}
 the partition function can be written as 
 \begin{equation}
+\label{eq: partition function for Yukawa's theory}
     \begin{split}
         \PF[J,\eta,\b{\eta}] &= \frac{1}{\norm}\sum_{n=0}^\infty\frac{(-ig)^n}{n!}\bigg(\bigvmedio{-i\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}_x}\bigg)^n\PF_0[J,\eta,\b{\eta}] \\
         &= \exp{\bigg\{-ig\bigvmedio{-i\frac{\delta^3}{\delta J\delta\eta\delta\b{\eta}}_x}\bigg\}}\PF_0[J,\eta,\b{\eta}],
@@ -70,14 +71,91 @@ while the term proportional to $g$ can be computed to be
 \end{equation}
 Hence, the interactive free energy is 
 \begin{equation}
+\label{eq: free energy for Yukawa's theory}
     \begin{split}
         \HE[J,\eta,\b{\eta}] &= -\frac{1}{2}\vmedio{J_x\Delta_{xy}J_y}_{xy} - \vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy} \\
         &- g(\vmedio{S_{xx}\Delta_{xy}J_y}_{xy} + \vmedio{\b{\eta}_uS_{yx}S_{xy}\eta_y\Delta_{xw}J_w}_{xywu})
     \end{split}
 \end{equation}
 
-\section{Correlation functions}
-...
-
-
-
+\subsection{Correlation functions}
+Now that we obtained the partition function \eqref{eq: partition function for Yukawa's theory} and consequently the free energy \eqref{eq: free energy for Yukawa's theory}, we can compute some correlation functions. We start from the 3-point function, this is 
+\begin{equation}
+    \begin{split}
+        G^{(3)}_{\phi\psi\b{\psi}}(x,y,z) \propto \frac{\delta^3}{\delta J_x\delta \eta_y\delta \b{\eta}_z}\HE_0[J,\eta,\b{\eta}] &= \mybrakett{0}{\TO{\phi(x)\psi(y)\b{\psi}(z)}}{0} \\
+        &= -g\vmedio{\Delta_{wx}S_{wz}S_{yw}}_w.
+    \end{split}
+\end{equation}
+Converting this into a Feynman diagram we get the following one 
+\begin{equation}
+    +FD.
+\end{equation}
+The Feynman rule for the vertex in Yukawa's theory is therefore
+\begin{equation}
+    +FD \mapsto -ig\int d^4w\,\delta_{\gamma\lambda}.
+\end{equation}
+We can briefly look at the 1-point function, which is 
+\begin{equation}
+    \begin{split}
+        G^{(1)}_\phi(x) = \frac{\delta}{\delta J_x}\HE[J,\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0} &= \vmedio{S_{\alpha\alpha}(y - y)\Delta_{xy}}_y = +FD.
+    \end{split}
+\end{equation}
+Now, the 4-point function starts at order $g^2$ since at order $g$ we can not build a consistent interaction with the Feynman rules of Yukawa's theory, this is 
+\begin{equation}
+    \begin{split}
+        G^{4}_{\phi\phi\psi\b{\psi}}(x,y,z,w) &= (-ig)^2\int d^4u\,d^4v\,\Delta_{wu}\Delta_{zv} \\
+        &\times S_{\alpha_1\gamma_1}(u - x)S_{\gamma_2\delta_1}(v - u)S_{\gamma_\beta}(y - v)\delta_{\gamma_1\gamma_2}\delta_{\delta_1\delta_2} \\
+        &= (-ig)^2\int d^4u\,d^4v\,\Delta_{wu}\Delta_{zv} [S_{ux}S_{vu}S_{yv}]_{\alpha\beta},
+    \end{split}
+\end{equation}
+whose Feynman diagram is 
+\begin{equation}
+    +FD.
+\end{equation}
+The second contribution for the 4-point function is at order $g^4$, this is 
+\begin{equation}
+    \begin{split}
+        G^{4}_{\phi\phi\phi\phi}(x,y,z,w) &= (-ig)^4\int d^4x \,d^4y\,d^4z\,d^4w\,\Delta_{xa}\Delta_{wb}\Delta_{yc}\Delta_{zf} \\
+        & \times S_{\alpha_1\alpha_2}(b - a)S_{\beta_1\beta_2}(f - b)S_{\gamma_1\gamma_2}(c - f)S_{\delta_1\delta_2}(a - c) \\
+        &\times \delta_{\alpha_2\beta_1}\delta_{\beta_2\gamma_1}\delta_{\gamma_2\delta_1}\delta_{\alpha_1\beta_2} \\
+        &= (-ig)^4\int d^4x \,d^4y\,d^4z\,d^4w\,\Delta_{xa}\Delta_{wb}\Delta_{yc}\Delta_{zf} \\
+        & \times \tr{\{S(b - a)S(f - b)S(c - f)S(a - c)\}},
+    \end{split} 
+\end{equation}
+whose Feynman diagram is 
+\begin{equation}
+    +FD.
+\end{equation}
+The Feynman rules can be written in momentum space through Fourier transforms 
+\begin{equation}
+    \Delta(x - y) = \int \frac{d^4k}{(2\pi)^4}e^{-ik(x - y)}\frac{i}{k^2 - m^2 + i\epsilon},
+\end{equation}
+where we identify the Feynman propagator in momentum space as 
+\begin{equation}
+    \t{\Delta}(k) \equiv \frac{i}{k^2 - m^2 + i\epsilon} = +FD.
+\end{equation}
+In a similar way, the fermion propagator can be written as 
+\begin{eqnarray}
+    S(x - y) = \int\frac{d^4k}{(2\pi)^4}e^{-ik(x - y)}\frac{i}{\sl{k} - m + i\epsilon},
+\end{eqnarray}
+where we identify
+\begin{equation}
+    \t{S}(k) \equiv \frac{i}{\sl{k} - m + i\epsilon} = \frac{i(\sl{k} + m)}{k^2 - m^2 + i\epsilon}.
+\end{equation}
+With these form of the Feynman rules, we can write, for example, the 3-point function as 
+\begin{multline}
+        -ig\int d^4w\,\Delta_{xw}S_{yw}S_{wv} = \\ = -ig\int d^4w\frac{d^4k}{(2\pi)^4}\frac{d^4p}{(2\pi)^4}\frac{d^4q}{(2\pi)^4} \frac{e^{-ik(x - w)}}{k^2 - m^2}\frac{e^{-ip(y - w)}}{\sl{p} - m}\frac{e^{-iq(w  -v)}}{\sl{q} - m},
+\end{multline}
+now, factorizing the exponentials, we can identify the Fourier transform 
+\begin{multline}
+    (-ig)\int \frac{d^4k}{(2\pi)^4}\frac{d^4p}{(2\pi)^4}\frac{d^4q}{(2\pi)^4} e^{-i(kx + py + qv)} \times {} \\
+    \times \int d^4w\,e^{-iw(k + p -q)}\frac{i^3}{(k^2 - m^2)(\sl{p} - m)(\sl{q} - m)},
+\end{multline}
+where we can also identify the Dirac's delta definition which gives the conservation of momentum condition on the vertex, namely
+\begin{equation}
+    (-ig)\int d^4w\,e^{-iw(k + p -q)} = (-ig)(2\pi)^4\delta^4(k + p - q).
+\end{equation}
+Thus, considering also the spinor indices, the Feynman rule for the vertex is momentum space is 
+\begin{equation}
+    +FD = -ig\delta_{\alpha\beta}\delta^4(k + p - q).
+\end{equation}
