@@ -505,17 +505,9 @@ therefore
         &= -\ln{[1 + e^{\HE_0[J]}(\delta - 1)e^{\HE_0[J]}]}.
     \end{split}
 \end{equation}
-Now denoting $A \equiv e^{\HE_0[J]}(\delta - 1)e^{-\HE_0[J]}$, we can expand the logarithm in Taylor series 
+Now denoting $A \equiv e^{\HE_0[J]}(\delta - 1)e^{-\HE_0[J]}$, we can expand the logarithm in Taylor series $\ln{(1 + A)} = A - A^2/2 + A^3/3! + \cdots$, where $A$ can itself be expanded as 
 \begin{equation}
-    \ln{(1 + A)} = A - \frac{A^2}{2} + \frac{A^3}{3!} + \cdots,
-\end{equation}
-where $A$ can itself be expanded as 
-\begin{equation}
-    A = e^{\HE_0[J]}(\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots)e^{-\HE_0[J]},
-\end{equation}
-with 
-\begin{equation}
-    \alpha_i \equiv \bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J}\bigg)}_x.
+    A = e^{\HE_0[J]}(\lambda\alpha_1 + \lambda^2\alpha_2 + \lambda^3 \alpha_3 + \cdots)e^{-\HE_0[J]},\quad \alpha_i \equiv \bigvmedio{-iV\bigg(-i\frac{\delta}{\delta J_i}\bigg)}_x.
 \end{equation}
 Putting all together, we have 
 \begin{equation}
@@ -528,9 +520,9 @@ Putting all together, we have
 \end{equation}
 where in the last step we stopped at the third order in $\lambda$. To compute the $\alpha_i$s we need to assume, in a more precise way, the form of the potential. We choose $V(\phi) \equiv \lambda\phi^4/4$ which defines the \emph{$\phi^4$-theory}, so that, for example, $\alpha_1$ is 
 \begin{equation}
-    \alpha_1 = -\frac{i}{4!}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_xe^{-\HE_0[J]}.
+    \alpha_1 = -\frac{i}{4!}\bigvmedio{e^{\HE_0[J]}\frac{\delta^4}{\delta J_x^4}e^{-\HE_0[J]}}_x.
 \end{equation}
-Before compute it, we can see that the partition function in this particular theory is 
+Before we compute it, we can see that the partition function in this particular theory is 
 \begin{equation}
     \begin{split}
         \PF[J] &= \sum_{n=0}^\infty\frac{(-i)^n}{n!}\bigg(\prod_{i=1}^n\int d^4x_i\bigg)\int \pathd\phi\,\phi^4_1\cdots\phi_n^4 e^{i(S_0 + \vmedio{J\phi}_x)} \\
@@ -539,3 +531,343 @@ Before compute it, we can see that the partition function in this particular the
         &= \exp{\bigg\{-i\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_x\bigg\}} \int \pathd\phi\,e^{i(S_0 + \vmedio{J\phi}_x)}
     \end{split}
 \end{equation}
+So, back to $\alpha_1$, we have 
+\begin{equation}
+    \begin{split}
+        \alpha_1 &\propto\bigvmedio{e^{\HE_0[J]}\frac{\delta^3}{\delta J_x^3}(\vmedio{\Delta_{xy}J_y}_y)e^{-\HE_0[J]}}_x  \\
+        &\propto\bigvmedio{e^{\HE_0[J]}\frac{\delta^2}{\delta J_x^2}(-\Delta_{xx} + \Delta_{xy}J_y\Delta_{xz}J_z)e^{-\HE_0[J]}}_{xyz} \\
+        &\propto\bigg\langle e^{\HE_0[J]}\frac{\delta}{\delta J_x}(\Delta_{xx}\Delta_{xy}J_y + \Delta_{xx} - \Delta_{xy}J_y\Delta_{xz}J_z\Delta_{xw}J_w)e^{-\HE_0[J]}\bigg\rangle_{xyzw} \\
+        &\propto\bigg\langle e^{\HE_0[J]}2\Delta_{xx}\Delta_{xx} - 2\Delta_{xx}\Delta_{xy}J_y\Delta_{xw}J_w + \Delta_{xx}\Delta_{xy}J_y \Delta_{xz}J_z\Delta_{xx} \\
+        &+ (2\Delta_{xx}\Delta_{xy}J_y + \Delta_{xx} - \Delta_{xy}\Delta_{xz}J_yJ_z\Delta_{xw}J_w)\Delta_{xu}J_ue^{-\HE_0[J]}\bigg\rangle_{xyzwu},
+    \end{split}
+\end{equation}
+rearranging the terms, this becomes 
+\begin{multline}
+    \alpha_1 = -\frac{i}{4!}\vmedio{3\Delta_{xx}\Delta_{xx} - 6\Delta_{xx}\Delta_{xy}\Delta_{xz}J_yJ_z + \\ + \Delta_{xy}\Delta_{xz}\Delta_{xw}\Delta_{xu}J_yJ_zJ_wJ_u}_{xyzwu}.
+\end{multline}
+We can go on by computing $\alpha_2$ using $\alpha_1$ in the following way 
+\begin{equation}
+    \begin{split}
+        \alpha_2 &= \frac{1}{2(4!)^2}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_x\bigvmedio{\frac{\delta^4}{\delta J_y^4}}_y e^{-\HE_0[J]} \\
+        &= \frac{1}{2(4!)^2}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_x e^{-\HE_0[J]}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_y^4}}_y e^{-\HE_0[J]} \\
+        &=  \frac{1}{2(4!)^2}e^{\HE_0[J]}\bigvmedio{\frac{\delta^4}{\delta J_x^4}}_x e^{-\HE_0[J]}\alpha_1[J] \\
+        &= \frac{1}{2}\alpha_1^2 + \frac{1}{2(4!)}\bigvmedio{\frac{1}{\cancel{4!}}(\cancel{4!})\Delta_{xv}^4}_{xv} + \cdots \\
+        &= \frac{1}{2}\alpha_1^{\rem{C}} + \alpha_2^{\rem{C}}.
+    \end{split}
+\end{equation}
+Through the integration, everything becomes connected. All the various terms are connected in a single integral:
+\begin{equation}
+    \alpha_2 - \frac{1}{2}\alpha_1^2 = \frac{1}{2}\alpha_1^2 + \alpha_2^C - \frac{1}{2}\alpha_1^2 \equiv \alpha_2^{\rem{C}}.
+\end{equation}
++LEZIONE 12.11 DA FINIRE.
+
+\section{Spinor fields}
+Until now, we have worked with scalar fields, which describe bosons. However, the other important field is the spinor, which describes fermions instead. In particular, they are typically described through Dirac spinors, denoted as $\psi_\alpha(x)$, where $\alpha$ is the spinor index, not to be confused with a Lorentz index. The main difference between bosons and fermions is that the former satisfy commutation relations, while the latter satisfy anti-commutation relations. For this purpose, it is convenient to introduce the \emph{Grassmann numbers}, also called \emph{G-numbers}. Given a G-number $\theta$, this is defined such that it satisfies 
+\begin{equation}
+\label{eq: G-number definition}
+    \begin{cases}
+        \acomm{\theta}{\theta} = 0 \\
+        \theta^2 = 0
+    \end{cases}.
+\end{equation}
+The name G-number is to differentiate anti-commutative variables from ordinary variables, which commuting variables, for this reason also called \emph{c-numbers}. Now, given a generic function $f(\theta)$, we can see that 
+\begin{equation}
+    f(\theta) = \sum_{n = 0}^\infty c_n\theta^n = c + \alpha\theta,
+\end{equation}
+where $c$ is a G-number, while $\alpha$ is a c-number. This means that every function of G-numbers is linear and all the terms proportional to even powers of $\theta$ vanish because of the property $\theta^2 = 0$ in \eqref{eq: G-number definition}. With respect to G-numbers, we can also differentiate and integrate. Differentiation is normalized in a way that 
+\begin{equation}
+\label{eq: normalization of G-number's derivation}
+    \frac{d\theta}{d\theta} = 1,
+\end{equation}
+and the differentiation operators satisfy the same anti-commutation relation shown in \eqref{eq: G-number definition}, therefore
+\begin{equation}
+    \bigacomm{\frac{d}{d\theta}}{\frac{d}{d\theta}} = 0.
+\end{equation}
+Regarding integration, we need to impose the invariance under translations, that is 
+\begin{equation}
+    \int d\theta\,f(\theta) = \int d\theta\,f(\theta + \eta).
+\end{equation}
+Thus, for $f(\theta) = c + \alpha\theta$, we have that
+\begin{equation}
+    \begin{split}
+    \int d\theta\,(c + \alpha\theta) &= \int d\theta,(c + \alpha\theta + \alpha\eta) \\
+    &= \int d\theta\,(c + \alpha\theta) + \int d\theta\,\alpha\eta \\
+    0 &= \int d\theta\,\alpha\eta.
+    \end{split}
+\end{equation}
+Hence, since $\alpha\eta$ is a constant, we can say that in general 
+\begin{equation}
+    \int d\theta\,1 = 0.
+\end{equation}
+Moreover, we have the freedom to choose the measure to be 
+\begin{equation}
+\label{eq: measure of G-number's integration}
+    \int d\theta\,\theta = 1.
+\end{equation}
+From \eqref{eq: normalization of G-number's derivation} and \eqref{eq: measure of G-number's integration}, we can see that in Grassmann calculus, the operations of derivation and integration are virtually the same operation, as opposed to what happens in ordinary calculus. 
+
+We can now easily generalize to a number $n$ of Grassmann numbers $\theta_i$, with $i = 1,\dots,n$. As before, we have 
+\begin{equation}
+    \acomm{\theta_i}{\theta_j} = 0 \quad\Longleftrightarrow\quad \theta_i\theta_j = -\theta_j\theta_i,
+\end{equation}
+\begin{equation}
+     \bigacomm{\frac{d}{d\theta_i}}{\frac{d}{d\theta_j}} = 0 \quad\Longleftrightarrow\quad \frac{d}{d\theta_i}\frac{d}{d\theta_j} = -\frac{d}{d\theta_j}\frac{d}{d\theta_i},
+\end{equation}
+from where we can see that the order of derivation matters. Also, a function $f(\theta_i)$ can be written as a polynomial of order $n$ if we have $n$ G-numbers, that is 
+\begin{equation}
+    f(\theta_i) = C + \nsum_i\alpha_i\theta_i + \nsum_{i,j}\beta_{ij}\theta_i\theta_j + \cdots + \gamma\theta_1\cdots\theta_n.
+\end{equation}
+The reason why a function of $n$ G-numbers can be written at most as a polynomial of order $n$, is because of the property $\theta^2$; in fact, if we consider $\theta_1\cdots\theta_{n}\theta_{1}$, we could move the $\theta_1$ from the end of this product to the front of it, together with all the signs that appears after every swap, obtaining $\theta_1\theta_{1}\cdots\theta_{n}$, which is indeed zero since $\theta_1^2 = 0$. Similarly, for integration we observe that 
+\begin{equation}
+    \int d\theta_1d\theta_2\, \theta_1\theta_2 = - 1 \neq \int d\theta_1d\theta_2\, \theta_2\theta_1 = + 1.
+\end{equation}
+Thus, when we integrate G-numbers, we impose the prescription that the variable on which we are integrating should be the first that appears in the integral, so that after integrating we do not get an additional minus sign.
+
+Now, suppose that we want to compute the following integral over Grassmann numbers
+\begin{equation}
+    \int d\theta_1 d\theta_2\,e^{-\theta^TM\theta},\quad \theta = 
+    \begin{pmatrix}
+        \theta_1 \\
+        \theta_2
+    \end{pmatrix}.
+\end{equation}
+If we focus on the exponent, we get 
+\begin{equation}
+    \begin{split}
+        \theta^TM\theta &= 
+        \begin{pmatrix}
+            \theta_1 & \theta_2    
+        \end{pmatrix}
+        \begin{pmatrix}
+            m_{11} & m_{12} \\
+            m_{21} & m_{22}
+        \end{pmatrix}
+        \begin{pmatrix}
+        \theta_1 \\
+        \theta_2
+    \end{pmatrix} \\
+    &= 
+    \begin{pmatrix}
+        \theta_1 & \theta_2    
+    \end{pmatrix}
+    \begin{pmatrix}
+        m_{11}\theta_1 + m_{12}\theta_2 \\
+        m_{21}\theta_1 + m_{22}\theta_2 
+    \end{pmatrix} \\
+    &= \theta_1(m_{11}\theta_1 + m_{12}\theta_2) + \theta_2(m_{21}\theta_1 + m_{22}\theta_2) \\
+    &= m_{12}\theta_1\theta_2 + m_{21}\theta_2\theta_1 \\
+    &= (m_{12} - m_{21})\theta_1\theta_2,
+    \end{split}
+\end{equation}
+where we have used that $\theta_1^2 = \theta_2^2 = 0$ and that $\acomm{\theta_1}{\theta_2} = 0$. This implies that only if the matrix $M$ is antisymmetric the result is non-trivial. However, if the matrix $M$ is a generic one, we can always decompose it into the sum $M = M_S + M_A$, where $M_S$ and $M_A$ are symmetric and antisymmetric matrices respectively, and only consider the antisymmetric sector of $M$. Moreover, for antisymmetric matrix, $m_{ij} = -m_{ji}$, therefore 
+\begin{equation}
+    \theta^TM\theta = 2m_{12}\theta_1\theta_2 = 2\sqrt{\det{M}}\theta_1\theta_2.
+\end{equation}
+Substituting this is the integral considered, we find that 
+\begin{equation}
+\label{eq: integral over two G-numbers}
+    \begin{split}
+        \int d\theta_1\theta_2\,e^{-\theta^TM\theta} &= \int d\theta_1 d\theta_2\,(1 - \theta^TM\theta) \\
+        &= -2\sqrt{\det{M}}\int d\theta_1 d\theta_2\,\theta_1\theta_2 \\
+        &= 2\sqrt{\det{M}},
+    \end{split}
+\end{equation}
+where the first step is valid only for two G-numbers.
+\begin{obs}
+    The result obtained in \eqref{eq: integral over two G-numbers} is similar to the one obtained in ordinary calculus, that is 
+    \begin{equation}
+        \int dx_1 dx_2\,e^{-x^TMx} = \frac{\pi}{\sqrt{\det{M}}}.
+    \end{equation}
+\end{obs}
+We can now generalize to an (even\footnote{Integrating with respect to an odd number of G-numbers gives a trivial result.}) number of G-numbers by recalling that the product $\theta^TM\theta$ can be more easily computed if the matrix $M$ is set in a \emph{Jordan form}, which is an operation that is possible to apply to an antisymmetric matrix. In this way, we have 
+\begin{equation}
+    \int d\theta_1\cdots d\theta_{2n}\,e^{-\theta^TM\theta} = \int d\theta_1\cdots d\theta_{2n}\,\exp{\bigg\{-\sum_{\alpha=1}^n\theta_\alpha^TM_\alpha\theta_\alpha\bigg\}},
+\end{equation}
+where $M_\alpha$ is the $\alpha$th block of the matrix $M$ in Jordan form, namely 
+\begin{equation}
+    M_\alpha = 
+    \begin{pmatrix}
+        \OM & \lambda_i \\
+        -\lambda_i & \OM
+    \end{pmatrix}.
+\end{equation}
+Therefore, we have 
+\begin{equation}
+    \begin{split}
+    \int d\theta_1\cdots d\theta_{2n}\,e^{-\theta^TM\theta} &= \int d\theta_1\cdots d\theta_{2n}\,(2\lambda_1\theta_1^{(2)}\theta_1^{(2)})\cdots(2\lambda_1\theta_n^{(2)}\theta_n^{(2)}) \\ 
+    &= 2^n\sqrt{\det{M}}.
+    \end{split}
+\end{equation}
+Now consider a deformation of the just computed integral 
+\begin{equation}
+    \int d\theta_1\cdots d\theta_{2n}\,e^{-\theta^TM\theta + \eta^T\theta + \theta^T\eta},
+\end{equation}
+where $\eta$ is of course a G-number. Focusing on the exponent, we can rewrite it as 
+\begin{equation}
+    \theta^TM\theta - \eta^T\theta - \theta^T\eta = (\theta^T - \eta^T\eta^{-1})M(\theta - \eta^{-1}\eta) - \eta^TM^{-1}\eta.
+\end{equation}
+Then by defining $\theta' \equiv \theta - \eta^{-1}\eta$, we have 
+\begin{equation}
+    \int d\theta_1'\cdots d\theta_{2n}'\,e^{-\theta^{\prime T}M\theta'}e^{\eta^TM^{-1}\eta} = 2^n\sqrt{\det{M}}e^{\eta^TM^{-1}\eta},
+\end{equation}
+where we have used the previous result \eqref{eq: integral over two G-numbers}. 
+
+\subsection{Partition function for fermions}
+To compute correlation functions involving fermions, we need a fermionic partition function. To define it, we start from the Dirac's action 
+\begin{equation}
+\label{eq: Dirac's action}
+    S_\rem{D} = \int d^4x\,\b{\psi}(i\sl{\p} - m)\psi \equiv S_0,
+\end{equation}
+from where we can derive the two equivalent equations of motion 
+\begin{equation}
+    \begin{cases}
+        (\sl{\p} - m)\psi = 0 \\
+        \b{\psi}(\backv{\sl{\p}} - m) = 0
+    \end{cases},
+\end{equation}
+where usually the first one is referred to \emph{Dirac's equation}. Therefore, we define the free partition function for fermions as 
+\begin{equation}
+\label{eq: free partition function for fermions}
+    \PF_0 = \int \pathd\psi\pathd\b{\psi}\,e^{iS_0}.
+\end{equation}
+As we did for the scalar field, to do real computations we need to introduce a source term, and in this case we define 
+\begin{equation}
+\label{eq: free partition function for fermions (with source term)}
+    \PF_0[\eta,\b{\eta}] = \int\pathd\psi\pathd\b{\psi}\,e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})},
+\end{equation}
+where $\eta$ and $\b{\eta}$ are constant Dirac's spinors themselves. Since we are dealing with fermions, applying functional derivatives is not as simple as we have seen for scalar fields. In fact, we need to define 
+\begin{equation}
+    -i\frac{\delta}{\delta\eta_\alpha(x)}\PF_0[\eta,\b{\eta}] = \int \pathd\psi\pathd\b{\psi}\,\b{\psi}_\alpha(x)e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})},
+\end{equation}
+and 
+\begin{equation}
+    i\frac{\delta}{\delta\b{\eta}_\alpha(x)}\PF_0[\eta,\b{\eta}] = \int \pathd\psi\pathd\b{\psi}\,\psi_\alpha(x)e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})},
+\end{equation}
+where the difference in sign helps to not have a minus sign in the right-hand side of these two equations. As an example, suppose that we want to compute $\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\psi_3 e^{iS_0}$. To do it, we start from 
+\begin{equation}
+    (-i)^3\frac{\delta}{\delta\b{\eta}_3}\frac{\delta}{\delta\b{\eta}_2}\frac{\delta}{\delta\b{\eta}_1}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0}.
+\end{equation}
+\begin{notz}
+    For a lighter notation, we use $\psi_i = \psi_{\alpha_i}(x_i)$, where in place of $\psi$ there can also be $\eta$, or any other spinor.
+\end{notz}
+So, the first derivative gives us 
+\begin{multline}
+    (-i)^3\frac{\delta}{\delta\b{\eta}_3}\frac{\delta}{\delta\b{\eta}_2}\int \pathd\psi\pathd\b{\psi}\,(i\psi_1)e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} = \\ 
+    = (-i)^2\frac{\delta}{\delta\b{\eta}_3}\frac{\delta}{\delta\b{\eta}_2}\int \pathd\psi\pathd\b{\psi}\,\psi_1e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}.
+\end{multline}
+Now, we have to be careful with the second derivative since now we have to account for the swap with $\psi_1$ which gives us an additional minus sign. Thus, we have 
+\begin{multline}
+    (-i)^2\frac{\delta}{\delta\b{\eta}_3}\int \pathd\psi\pathd\b{\psi}\,\psi_1(-i\psi_2)e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} = \\ 
+    = -(-i)\frac{\delta}{\delta\b{\eta}_3}\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}.
+\end{multline}
+Now again, for the third derivative we need to account for the swap with $\psi_1$ and $\psi_2$ which results in a plus sign, so at the end we remain with 
+\begin{multline}
+    i\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2(i\psi_3)e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} = \\
+    = -\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\psi_3e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}.
+\end{multline}
+Therefore, we obtain 
+\begin{equation}
+    \begin{split}
+        (-i)^3\frac{\delta}{\delta\b{\eta}_3}\frac{\delta}{\delta\b{\eta}_2}\frac{\delta}{\delta\b{\eta}_1}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0} &= -\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\psi_3e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}\bigg|_{\eta,\b{\eta} = 0} \\
+        &= -\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\psi_3e^{iS_0} \\
+        (-i)^3\frac{\delta}{\delta\b{\eta}_1}\frac{\delta}{\delta\b{\eta}_2}\frac{\delta}{\delta\b{\eta}_3}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0} &= \int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\psi_3e^{iS_0}.
+    \end{split}
+\end{equation}
+In general, we have 
+\begin{equation}
+    \int \pathd\psi\pathd\b{\psi}\,\psi_1\cdots\psi_ne^{iS_0} = (-i)^n\frac{\delta^n}{\delta\b{\eta}_1\cdots\delta\b{\eta}_n}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0}.
+\end{equation}
+As we did for the free partition function of the scalar field, we can focus on the exponent on \eqref{eq: free partition function for fermions (with source term)} and use the Fourier transforms of the fields
+\begin{equation}
+    \psi(x) = \int \frac{d^4k}{(2\pi)^4}e^{ikx}\t{\psi}(k),
+\end{equation}
+\begin{equation}
+    \eta(x) = \int \frac{d^4k}{(2\pi)^4}e^{ikx}\t{\eta}(k),
+\end{equation}
+to rewrite it as 
+\begin{equation}
+    \int d^4x\int\frac{d^4k}{(2\pi)^4}\int\frac{d^4k'}{(2\pi)^4}[\b{\t{\psi}}(k')(\sl{k} - m)\t{\psi}(k) + \b{\t{\eta}}(k')\t{\psi}(k) + \b{\t{\psi}}(k)\t{\eta}(k')]e^{-i(k - k')x},
+\end{equation}
+which, by identifying the Dirac's delta, becomes 
+\begin{multline}
+    \int\frac{d^4k}{(2\pi)^4}[\b{\t{\psi}}(-k)(\sl{k} - m)\t{\psi}(k) + \b{\t{\eta}}(-k)\t{\psi}(k) + \b{\t{\psi}}(k)\t{\eta}(-k)] = \\
+    = \int\frac{d^4k}{(2\pi)^4}\{[\b{\t{\psi}}(-k) + \b{\t{\eta}}(-k)(\sl{k} - m)^{-1}](\sl{k} - m)[\t{\psi}(k) + (\sl{k} - m)^{-1}\t{\eta}(k)] + {} \\
+    - \b{\t{\eta}}(-k)(\sl{k} - m)^{-1}\t{\eta}(k)\}.
+\end{multline}
+Then, defining $\t{\psi}'(k) \equiv \t{\psi}(k) + (\sl{k} - m)^{-1}\t{\eta}(k)$, we obtain 
+\begin{equation}
+    \PF_0[\eta,\b{\eta}] = \int\pathd\psi\pathd\b{\psi}\,e^{iS_0}\exp{\bigg\{-i\int d^4k\,\b{\t{\eta}}(-k)(\sl{k} - m)^{-1}\t{\eta}(k)\bigg\}}.
+\end{equation}
+Moreover, including the normalization $\norm = \int \pathd\psi\pathd\b{\psi}\,e^{iS_0}$ in the definition of $\PF_0[\eta,\b{\eta}]$ as we did for the scalar field and using the anti-Fourier transforms 
+\begin{equation}
+    \t{\psi}(k) = \int d^4x\,e^{-ikx}\psi(x),
+\end{equation}
+\begin{equation}
+    \t{\eta}(x) = \int d^4x\,e^{-ikx}\eta(x),
+\end{equation}
+we finally obtain 
+\begin{equation}
+    \begin{split}
+        \PF_0[\eta,\b{\eta}] &= \exp{\bigg\{-i\int d^4k\,\b{\t{\eta}}(-k)(\sl{k} - m)^{-1}\t{\eta}(k)\bigg\}} \\
+        &= \exp{\bigg\{-\int d^4x\,d^4y\,\b{\eta}_\alpha(x)S_{\alpha\beta}(x - y)\eta_\beta(y)\bigg\}} \\
+        &\equiv \exp{\{-\vmedio{\b{\eta}_\alpha(x)S_{\alpha\beta}(x - y)\eta_\beta(y)}_{xy}\}},
+    \end{split}
+\end{equation}
+where we have identified $S_{\alpha\beta}$ as 
+\begin{equation}
+    S_{\alpha\beta}(x - y) \equiv \int \frac{d^4k}{(2\pi)^4}\,\frac{ie^{-ik(y - x)}}{(\sl{k} - m)_{\alpha\beta}},
+\end{equation}
+where $(\sl{k} - m)^{-1} \equiv \t{S}_{\alpha\beta}(k)$ is just the fermionic propagator in momentum space, which can also be written as 
+\begin{equation}
+    \t{S}_{\alpha\beta}(k) = \frac{(\sl{k} + m)_{\alpha\beta}}{k^2 - m^2 + i\epsilon}.
+\end{equation}
+We can also easily check that the vacuum expectation value of the time-ordered product of $\psi_\alpha(x)$ and $\b{\psi}_\beta(y)$ is the fermionic propagator. In fact, we have 
+\begin{equation}
+    \begin{split}
+        \mybrakett{0}{\TO{\psi_\alpha(x)\b{\psi}_\beta(y)}}{0} &= \bigg(-i\frac{\delta}{\delta\b{\eta}_\alpha(x)}\bigg)\bigg(i\frac{\delta}{\delta\eta_\beta(y)}\bigg)\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta} = 0} \\
+        &= \frac{\delta}{\delta\b{\eta}_\alpha(x)}\bigg(\vmedio{\b{\eta}_\gamma(u)S_{\gamma\beta}(u - y)}_y \\
+        &\times\exp{\{-\vmedio{\b{\eta}_\alpha(x)S_{\alpha\beta}(x - y)\eta_\beta(y)}_{xy}\}}\bigg)\bigg|_{\eta,\b{\eta} = 0} \\
+        &= S_{\alpha\beta}(x - y).
+    \end{split}
+\end{equation}
+At last, we see that the free-energy is given by 
+\begin{equation}
+    \HE_0[\eta,\b{\eta}] = \vmedio{\b{\eta}_\alpha(x)S_{\alpha\beta}(x - y)\eta_\beta(y)}_{xy},
+\end{equation}
+which generates only the connected diagrams, as opposed to $\PF_0[\eta,\b{\eta}]$ which generates both connected and disconnected diagrams. In fact, we can see that 
+\begin{equation}
+    G_2^{\rem{C}}(x_1,x_2) = \frac{\delta}{\delta\eta_2\delta\b{\eta}_1}\HE_0[\eta,\b{\eta}] = S_{\alpha\beta}(x_1 - x_2),
+\end{equation}
+which is the only connected Green's function, as expected for a free theory. 
+\begin{ex}
+    Consider the correlation function $\mybrakett{0}{\TO{\psi_1\psi_2\b{\psi}_3\b{\psi}_4}}{0}$. Using Wick's theorem, we have 
+    \begin{equation}
+        \begin{split}
+            \mybrakett{0}{\TO{\psi_1\psi_2\b{\psi}_3\b{\psi}_4}}{0} &= \wick{\c1 \psi_1 \c2 \psi_2 \c1 {\b{\psi}_3} \c2 {\b{\psi}_4}} + \wick{\c1 \psi_2 \c2 \psi_2 \c2 {\b{\psi}_3} \c1 {\b{\psi}_4}} \\
+            &= -\wick{\c1 \psi_1 \c1 {\b{\psi}_3} \c1 \psi_2 \c1 {\b{\psi}_4}} + \wick{\c1 \psi_1 \c1 {\b{\psi}_4} \c1 \psi_2 \c1 {\b{\psi}_3}} \\
+            &= +FD.
+        \end{split}
+    \end{equation}
+    Using functional derivatives, we have 
+    \begin{equation}
+        \begin{split}
+            \frac{(-i)^2(i)^2\delta^4}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3\delta\eta_4}\PF_0[\eta,\b{\eta}]\bigg|_{\eta,\b{\eta}=0} &= \frac{1}{\norm}\frac{\delta^3}{\delta\b{\eta}_1\delta\b{\eta}_2\eta_3}\int \pathd\psi\pathd\b{\psi}\,(-i)\b{\psi}_4e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\frac{\delta^2}{\delta\b{\eta}_1\delta\b{\eta}_2}\int \pathd\psi\pathd\b{\psi}\,\b{\psi}_4\b{\psi}_3e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\frac{\delta}{\delta\b{\eta}_1}\int \pathd\psi\pathd\b{\psi}\,(i)\b{\psi}_4\b{\psi}_3\psi_2e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})} \\
+            &= \frac{1}{\norm}\int \pathd\psi\pathd\b{\psi}\,\b{\psi}_4\b{\psi}_3\psi_2\psi_1e^{i(S_0 + \vmedio{\b{\eta}\psi} + \vmedio{\eta\b{\psi}})}|_{\eta,\b{\eta}=0} \\
+            &= \frac{1}{\norm}\int \pathd\psi\pathd\b{\psi}\,\psi_1\psi_2\b{\psi}_3\b{\psi}_4.
+        \end{split}
+    \end{equation}
+    However, we know what $\PF_0[\eta,\b{\eta}]$ is, therefore 
+    \begin{equation}
+        \begin{split}
+            \frac{\delta^4}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3\delta\eta_4}(e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}})\bigg|_{\eta,\b{\eta}=0} &= \frac{\delta^3}{\delta\b{\eta}_1\delta\b{\eta}_2\delta\eta_3}(-\vmedio{\b{\eta}_xS_{xx_4}}_xe^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}}) \\
+            &= \frac{\delta^2}{\delta\b{\eta}_1\delta\b{\eta}_2}(-\vmedio{\b{\eta}_xS_{xx_4}}_x\vmedio{\b{\eta}_yS_{yx_3}}_y \\
+            &\times e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}}) \\
+            &= \frac{\delta}{\delta\b{\eta}_1}(-S_{x_2x_4}\vmedio{\eta_yS_{yx_3}}_ye^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}} \\
+            &+ \vmedio{\b{\eta}_xS_{xx_4}}_xS_{x_2x_3}e^{-\vmedio{\b{\eta}_xS_{xy}\eta_y}_{xy}})\bigg|_{\eta,\b{\eta}=0} \\
+            &= -S_{x_2x_4}S_{x_1x_3} + S_{x_1x_4}S_{x_2x_3}.
+        \end{split}
+    \end{equation}
+    As we can see, we obtained exactly what we found from contracting fields and using Wick's theorem.
+\end{ex}
