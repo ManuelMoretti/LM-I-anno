@@ -159,3 +159,113 @@ Thus, considering also the spinor indices, the Feynman rule for the vertex is mo
 \begin{equation}
     +FD = -ig\delta_{\alpha\beta}\delta^4(k + p - q).
 \end{equation}
+
+\section{Scattering amplitudes}
+Other than correlation functions, the really important objects that we can compute with QFT, which is very powerful at conicidentally, are \emph{scattering amplitudes}
+\begin{equation}
+    A = \mybraket{\rem{out}}{\rem{in}},
+\end{equation}
+where with ``out'' and ``in'' we refer to the initial and final state of a certain system. These quantities are obviously fundamental for interacting theories, but of course their computation is more complex than the free theory counter-part. 
+
+The scalar fields of a free theory can be expanded as 
+\begin{equation}
+    \phi(x) = \int \frac{d^3p}{(2\pi)^3\sqrt{2E_p}}e^{i\v{p}\cdot\v{x}}[a(t,p) + a^\dg(t,-p)].
+\end{equation}
+At $t = 0$, we have 
+\begin{equation}
+    \begin{split}
+        \ket{f} &= \int d^3x\,f(0,\v{x})\phi(0,\v{x})\ko \\
+        &= \int d^3x\,f(0,\v{x})\int \frac{d^3p}{(2\pi)^3\sqrt{2E_p}}e^{i\v{p}\cdot\v{x}}a^\dg(0,-p)\ko \\
+        &:= \int \frac{d^3p}{2E_p}\t{f}(p)\ket{\v{p}},
+    \end{split}
+\end{equation} 
+where 
+\begin{equation}
+    \ket{\v{p}} := \sqrt{2E_p}a^\dg(0,-p)\ko,\quad \t{f}(\v{p}) = \int \frac{d^3x}{(2\pi)^{3/2}}f(\v{x})e^{i\v{p}\cdot\v{x}}.
+\end{equation}
+The states $f$ and $\t{f}$ can be set to create a ``wave packet'' of a Gaussian form 
+\begin{equation}
+    \t{f}(0,p) = \sigma^{-3/4}e^{-(\v{p} - \v{k})^2/2\sigma},
+\end{equation}
+whose anti-Fourier transform is 
+\begin{equation}
+    f(0,\v{x}) = \sigma^{3/4}e^{-x^2\sigma/2}e^{i\v{k}\cdot\v{x}}.
+\end{equation}
+To compute their time evolution, we use the Schr\"odinger picture, thus 
+\begin{equation}
+    \begin{split}
+        i\frac{\p}{\p t}\ket{t,f} &= H\ket{t,f} \\
+        \int \frac{d^3p}{2E_p}\frac{\p\t{f}}{\p t}\ket{\v{p}} &= \int \frac{d^3p}{2E_p}\t{f}(t,\v{p})H\ket{p} \\
+        i\frac{\p \t{f}}{\p t} &= E_p\t{f}(t,\v{p}).
+    \end{split}
+\end{equation}
+Imposing the initial condition stated before leads us to 
+\begin{equation}
+    \t{f}(t,\v{p}) = \sigma^{-3/4}e^{-(\v{p} - \v{k})^2/2\sigma}e^{-iE_pt}.
+\end{equation}
+The value of $E_p$ can be expanded around $p = k$, assuming $\sigma \ll 1$, to get 
+\begin{equation}
+    E_p = E_k + \frac{\p E_p}{\p p_i}\bigg|_{p = k}(p_i - k_i) + \cdots,
+\end{equation}
+which plugged in the previous exponent yields 
+\begin{equation}
+    \begin{split}
+        f(t,\v{x}) &= \sigma^{-3/4}\int \frac{d^3q}{2E_k}\exp{\bigg\{-\frac{q^2}{2\sigma} - i\v{v}_k\cdot \v{q}t - i\v{q}\cdot\v{x}\bigg\}} \\
+        &\times \exp{\{-iE_kt - i\v{k}\cdot\v{x}\}} + \cdots \\
+        &= \sigma^{-3/4}\int \frac{d^3q}{2E_k}\exp{\bigg\{-\frac{1}{2\sigma}[\v{q} + i\sigma(\v{v}_kt + \v{x})]^2\bigg\}}+ \cdots.
+    \end{split}
+\end{equation}
+The latter is a Gaussian integral which results in 
+\begin{equation}
+    f(t,\v{x}) = \frac{\sigma^{3/4}}{2E_k}\exp{\bigg\{-\frac{\sigma}{2}(\v{v}_kt - \v{x})^2 - iE_kt - i\v{k}\cdot\v{x}\bigg\}}.
+\end{equation}
+Therefore, this is Gaussian is centered around its classical trajectory $x = v_kt$. For multi-particles state the form is similar
+\begin{equation}
+    \ket{f_1\cdots f_n} = \int \prod_{i=1}^n\frac{d^3p_i}{2E_{p_i}}\t{f}_i(0,\v{p}_i)\ket{\v{p}_1\cdots\v{p}_n},
+\end{equation}
+whose anti-Fourier transform at $t = 0$ is the same as before for each particle 
+\begin{equation}
+    f_i(0,\v{x}_i) = \sigma^{3/4}e^{-x^2\sigma/2}e^{i\v{k}_i\cdot\v{x}_i},
+\end{equation}
+and the time evolution is also the same as before 
+\begin{equation}
+    \t{f}_i(t,\v{p}_i) = \sigma^{-3/4}e^{-(\v{p}_i - \v{k}_i)^2/2\sigma}e^{-iE_{p_i}t},
+\end{equation}
+\begin{equation}
+    f_i(t,\v{x}_i) = \frac{\sigma^{3/4}}{2E_{k_i}}\exp{\bigg\{-\frac{\sigma}{2}(\v{v}_{k_i}t - \v{x}_i) - iE_{k_i}t - i\v{k}_i\cdot\v{x}_i\bigg\}}.
+\end{equation}
+
+For interacting thoeries, the main assumption is that there exist a vacuum state ``close'' to the free vacuum and that there is a single particle state $\ket{\v{p}}$ of momentum $\v{p}$ and mass $m_p \equiv m$, where $m$ is the \emph{bare mass}\footnote{For more details, see the notes of the course of Advanced QFT +LINK}. It is reasonable to assume that this is an eigenstate of $H$ and of the momentum. With this single particle state, we can compute the quantities found for the free theory, namely 
+\begin{equation}
+    \ket{f} = \int\frac{d^3p}{2E_p}\t{f}(p)\ket{\v{p}},\quad \ket{t,f} = \int\frac{d^3p}{2E_p}\t{f}(t,p)\ket{\v{p}},
+\end{equation}
+where $E_p^2 = p^2 - m^2$. Generalizing to multi-particle states, we can assume that at $t = 0$ they are all in $x = 0$, but in the ``far past'' and ``far future'' they do not interact, and are therefore free particles. At $t = -\infty$, so in the far past, there is the state 
+\begin{equation}
+    \ket{\rem{in}} = \int\prod_{i=1}^n\frac{d^2p_i}{2E_{p_i}}\t{f}_i(t,\v{p}_i)\ket{p_1\cdots p_n}_{\rem{in}},
+\end{equation}
+while at $t = \infty$, so in the far future, there is the state
+\begin{equation}
+    \ket{\rem{out}} = \int\prod_{i=1}^n\frac{d^2p_i}{2E_{p_i}}\t{f}_i(t,\v{p}_i)\ket{p_1\cdots p_n}_{\rem{out}}.
+\end{equation}
+The free field $\phi(x)$ can then be written as 
+\begin{equation}
+    \phi(x) = \int d^3p\,[g_p(t,\v{x})a(p) + g_p^*(t,\v{x})a^\dg(p)],
+\end{equation}
+where $g_p(t,\v{x})$ can be found from the Fourier transform of the field. We now recall a known resul in QFT, namely
+\begin{equation}
+    ia^\dg(p) = \int d^3x\,g_p(t,\v{x})\overset{\leftrightarrow}{\p}\phi(t,\v{x}),
+\end{equation}
+\begin{equation}
+    -ia(p) = \int d^3x\,g_p^*(t,\v{x})\overset{\leftrightarrow}{\p}\phi(t,\v{x}),
+\end{equation}
+where $g\overset{\leftrightarrow}{\p}f = g\p f - (\p g)f$ for $g$ and $f$ general functions. Their time derivatives are 
+\begin{equation}
+    \begin{split}
+        i\p_ta^\dg(p) &= \int d^3x\,[g_p(t,\v{x})\ddot{\phi}(x) - \ddot{g_p}(t,\v{x})\phi(x)] \\
+        &= \int d^3x\,[g_p(t,\v{x})\ddot{\phi}(x) - (\nabla^2 - m^2)g_p(t,\v{x})\phi(x)].
+    \end{split}
+\end{equation}
+Now since $g_p$ satisfies the Klein-Gordon equation, this can be integrated by parts twice yielding to $(\square - m^2)\phi(x) = 0$ in the free theory $i\p_ta^\dg(p) = 0$. 
+
+\section{LSZ reduction formula}
+...
