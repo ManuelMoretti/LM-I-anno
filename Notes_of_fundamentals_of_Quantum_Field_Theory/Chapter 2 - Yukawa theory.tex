@@ -163,7 +163,7 @@ Thus, considering also the spinor indices, the Feynman rule for the vertex is mo
 \section{Scattering amplitudes}
 Other than correlation functions, the really important objects that we can compute with QFT, which is very powerful at conicidentally, are \emph{scattering amplitudes}
 \begin{equation}
-    A = \mybraket{\rem{out}}{\rem{in}},
+    \amp = \mybraket{\rem{out}}{\rem{in}},
 \end{equation}
 where with ``out'' and ``in'' we refer to the initial and final state of a certain system. These quantities are obviously fundamental for interacting theories, but of course their computation is more complex than the free theory counter-part. 
 
@@ -251,21 +251,201 @@ The free field $\phi(x)$ can then be written as
 \begin{equation}
     \phi(x) = \int d^3p\,[g_p(t,\v{x})a(p) + g_p^*(t,\v{x})a^\dg(p)],
 \end{equation}
-where $g_p(t,\v{x})$ can be found from the Fourier transform of the field. We now recall a known resul in QFT, namely
+where $g_p(t,\v{x})$ can be found from the Fourier transform of the field, such that 
 \begin{equation}
+\label{eq: K-G equation for g_p}
+    (\square + m^2)g_p(t,\v{x}) = 0,\quad g_p(t,\v{x}) := \frac{1}{(2\pi)^{3/2}\sqrt{2E_p}}e^{-ipx}.
+\end{equation}
+We now recall a known result in QFT, namely
+\begin{equation}
+\label{eq: creation operator as a field derivative}
     ia^\dg(p) = \int d^3x\,g_p(t,\v{x})\overset{\leftrightarrow}{\p}\phi(t,\v{x}),
 \end{equation}
 \begin{equation}
+\label{eq: annihilation operator as a field derivative}
     -ia(p) = \int d^3x\,g_p^*(t,\v{x})\overset{\leftrightarrow}{\p}\phi(t,\v{x}),
 \end{equation}
-where $g\overset{\leftrightarrow}{\p}f = g\p f - (\p g)f$ for $g$ and $f$ general functions. Their time derivatives are 
+where $g\lrd f := g\p f - (\p g)f$ for $g$ and $f$ general functions. Their time derivatives are 
 \begin{equation}
+\label{eq: time derivative of the creation operator}
     \begin{split}
-        i\p_ta^\dg(p) &= \int d^3x\,[g_p(t,\v{x})\ddot{\phi}(x) - \ddot{g_p}(t,\v{x})\phi(x)] \\
+        i\p_ta^\dg(p) &= \int d^3x\,[g_p(t,\v{x})\p_t^2\phi(x) - \p_t^2g_p(t,\v{x})\phi(x)] \\
         &= \int d^3x\,[g_p(t,\v{x})\ddot{\phi}(x) - (\nabla^2 - m^2)g_p(t,\v{x})\phi(x)].
     \end{split}
 \end{equation}
-Now since $g_p$ satisfies the Klein-Gordon equation, this can be integrated by parts twice yielding to $(\square - m^2)\phi(x) = 0$. In the free theory $i\p_ta^\dg(p) = 0$. 
+Now since $g_p$ satisfies the Klein-Gordon equation, this can be integrated by parts twice yielding to $i\p_ta^\dg(p) = 0$ in a free theory since we would have had $(\square - m^2)\phi(x) = 0$.
 
-\section{LSZ reduction formula}
+\section{LSZ reduction formula for scalars}
+The objective now is to find a way to compute the amplitude between an initial state containing $n$ particles with momentum $\v{p}_i$ and a final state containing $m$ particles with momentum $\v{q}_m$, namely
+\begin{equation}
+    \amp = \prescript{}{\rem{out}}{\mybraket{\v{q}_1,\dots,\v{q}_m}{\v{p}_1,\dots,\v{p}_n}}_{\rem{in}} \equiv \mybraket{\rem{out}}{\rem{in}}.
+\end{equation}
+Of course, if the theory is a free theory, we expect that the initial and final states are the same, but for an interacting theory the two states can not only have the particles' momenta and energy changed, but also their number. As an anticipation, the result that we want to obtain is 
+\begin{equation}
+    \prescript{}{\rem{out}}{\mybraket{\v{q}_1,\dots,\v{q}_m}{\v{p}_1,\dots,\v{p}_n}}_{\rem{in}} \propto \mybrakett{\Omega}{\TO{\phi_{x_1}\cdots\phi_{x_n}\phi_{y_1}\cdots\phi_{y_m}}}{\Omega},
+\end{equation}
+which allows us to apply perturbation theory and use Feynman's diagrams. In order to do this, we first need to recall the definitions \eqref{eq: creation operator as a field derivative}, \eqref{eq: annihilation operator as a field derivative}, the relations \eqref{eq: time derivative of the creation operator} and \eqref{eq: K-G equation for g_p}, and then we need to make the assumption that creation and annihilation operators are asymptotically equal to operators that generate single particle states with defined momenta. In other words, we assume that 
+\begin{equation}
+\label{eq: far past and far future creation and annihilation operators}
+    \begin{cases}
+        \displaystyle\lim_{T \to -\infty}a^\dg(\v{p},T(1 - i\epsilon)) = \sqrt{Z}a^\dg_{\rem{in}}(\v{p}) \\
+        \displaystyle\lim_{T \to \infty}a(\v{p},T(1 - i\epsilon)) = \sqrt{Z}a^\dg_{\rem{out}}(\v{p})
+    \end{cases},
+\end{equation}
+where the operators on the right-hand sides are set to satisfy 
+\begin{equation}
+\label{eq: creation and annihilation operators acting on the vacuum}
+    \begin{cases}
+        a^\dg_{\rem{in}}(\v{p})\kO = \dfrac{1}{\sqrt{2E_p}}\ket{\v{p}} \\[2ex]
+        \bO a_{\rem{out}}(\v{p}) = \dfrac{1}{\sqrt{2E_p}}\bra{\v{p}}
+    \end{cases}.
+\end{equation}
+The idea is to write the multi-particle initial state $\ket{\v{p}_1,\dots,\v{p}_n}_{\rem{in}}$, which in far future becomes a state of $n$ free particles, in terms of creation (or annihilation for the ``out'' state) operators acting of the vacuum $\kO$. The first step is to use \eqref{eq: creation and annihilation operators acting on the vacuum} in order to ``remove'' the particle with momentum $\v{p}_1$ from the initial state, namely 
+\begin{equation}
+    \mybraket{\rem{out}}{\rem{in}} = \frac{1}{\sqrt{2E_p}}\mybrakett{\rem{out}}{a^\dg_{\rem{in}}(\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}}.
+\end{equation}
+Then, we need to add zero on the right-hand side, getting 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{1}{\sqrt{2E_p}}\mybrakett{\rem{out}}{a^\dg_{\rem{in}}(\v{p}_1) - a^\dg_{\rem{out}}(\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}} \\
+        &+ \frac{1}{\sqrt{2E_p}}\mybrakett{\rem{out}}{a^\dg_{\rem{out}}(\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}}.
+    \end{split}
+\end{equation}
+To continue, we also need to assume that we only care for processes where there is no \emph{forward scattering}. This kind of processes in fact include particles that do not interact during the scattering, resulting in at least one particle that has initial momentum equal to its final momentum. These types of scattering processes are schematically represented in the following Feynman's diagram +FD. In order to remove forward scattering processes, we need to impose that 
+\begin{equation}
+    \bra{\rem{out}}a^\dg_{\rem{out}}(\v{p}_i) = 0,\quad \v{q}_j \neq \v{p}_i,\,\forall i,j.
+\end{equation}
+Assuming this, we have 
+\begin{equation}
+    \frac{1}{\sqrt{2E_{p_1}}}\mybrakett{\rem{out}}{a^\dg_{\rem{out}}(\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}} = 0,
+\end{equation}
+which leaves us with 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{1}{\sqrt{2E_{p_1}}}\mybrakett{\rem{out}}{a^\dg_{\rem{in}}(\v{p}_1) - a^\dg_{\rem{out}}(\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \lim_{T \to \infty}\frac{-1}{\sqrt{2E_{p_1}Z}}\mybrakett{\rem{out}}{a^\dg(T,\v{p}_1) - a^\dg(-T,\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}},
+    \end{split}
+\end{equation}
+where we have used the assumptions \eqref{eq: far past and far future creation and annihilation operators}. The difference of creation operators in the latter equation can be written as an integral of a total time derivative, in this way we get 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{-1}{\sqrt{2E_{p_1}Z}}\intR dt_1\,\mybrakett{\rem{out}}{\p_ta^\dg(t_1,\v{p}_1)}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \frac{i}{\sqrt{2E_{p_1}Z}}\int d^4x\,g_{p_1}(x_1)(\square_1 + m^2)\mybrakett{\rem{out}}{\phi_{x_1}}{\v{p}_2,\dots,\v{p}_n}_{\rem{in}},
+    \end{split}
+\end{equation}
+where we have used \eqref{eq: time derivative of the creation operator}. As we can see, we have successfully removed the particle with momentum $\v{p}_1$. We can do the same for the second particle following virtually the same steps: so
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{i}{\sqrt{2E_{p_1}2E_{p_2}Z}}\int d^4x_1\,g_{p_1}(\square_1 + m^2)\mybrakett{\rem{out}}{\phi_{x_1}a^\dg_{\rem{in}}(\v{p}_2)}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \frac{i}{\sqrt{2E_{p_1}2E_{p_2}Z}}\int d^4x_1\,g_{p_1}(\square_1 + m^2) \\
+        &\times \mybrakett{\rem{out}}{\phi_{x_1}a^\dg_{\rem{in}}(\v{p}_2) + a^\dg_{\rem{out}}(\v{p}_2)\phi_{x_1}}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \frac{i}{\sqrt{2E_{p_1}2E_{p_2}Z^2}}\int d^4x_1\,g_{p_1}(\square_1 + m^2) \\
+        &\times \lim_{T \to \pm\infty}\mybrakett{\rem{out}}{\phi_{x_1}a^\dg(T,\v{p}_2) - \phi_{x_1}a^\dg(-T,\v{p}_2)}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \frac{-i}{\sqrt{2E_{p_1}2E_{p_2}Z^2}}\int d^4x_1\,g_{p_1}(\square_1 + m^2) \\
+        &\times \lim_{T \to \pm\infty}\mybrakett{\rem{out}}{\TO{a^\dg(T,\v{p}_2)\phi_{x_1}}}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}} \\
+        &= \frac{-i}{\sqrt{2E_{p_1}2E_{p_2}Z^2}}\int d^4x_1\,g_{p_1}(\square_1 + m^2) \\
+        &\times \intR dt_2\,\p_{t_2}\mybrakett{\rem{out}}{\TO{a^\dg(t_2,\v{p}_2)\phi_{x_1}}}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}},
+    \end{split}
+\end{equation}
+and in the end 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{-(i)^2}{\sqrt{2E_{p_1}2E_{p_2}Z^2}}\int d^4x_1\,d^4x_2\,g_{p_1}(\square_1 + m^2)g_{p_2}(\square_2 + m^2) \\
+        &\times \mybrakett{\rem{out}}{\TO{\phi_{x_1}\phi_{x_2}}}{\v{p}_3,\dots,\v{p}_n}_{\rem{in}}.
+    \end{split}
+\end{equation}
+Obviously, an analogous calculation can be done for all the $n$ particles, so that we remain with 
+\begin{equation}
+    \mybraket{\rem{out}}{\rem{in}} = \mybrakett{\rem{out}}{\TO{\phi_{x_1}\cdots\phi_{x_n}}}{\Omega}.
+\end{equation}
+Moreover, a similar computation can be done for the particles in the ``out'' state. We start again from the particle with momentum $\v{q}_1$. In this case, 
+\begin{equation}
+    \begin{split}
+        \mybrakett{\rem{out}}{\TO{\phi_{x_1}\cdots\phi_{x_n}}}{\Omega} &= \mybrakett{\v{q}_2,\dots,\v{q}_n}{a_{\rem{out}}(\v{q}_1)\TO{\phi_{x_1}\cdots\phi_{x_n}}}{\Omega} \\
+        &= \bra{\v{q}_2,\dots,\v{q}_n}a_{\rem{out}}(\v{q}_1)\TO{\phi_{x_1}\cdots\phi_{x_n}} \\
+        & - \TO{\phi_{x_1}\cdots\phi_{x_n}}a_{\rem{in}}(\v{q}_1)\ket{\Omega} \\
+        &+ \mybrakett{\v{q}_2,\dots,\v{q}_n}{\TO{\phi_{x_1}\cdots\phi_{x_n}}a_{\rem{in}}(\v{q}_1)}{\Omega} \\
+        &= \bra{\v{q}_2,\dots,\v{q}_n}a_{\rem{out}}(\v{q}_1)\TO{\phi_{x_1}\cdots\phi_{x_n}} \\
+        & - \TO{\phi_{x_1}\cdots\phi_{x_n}}a_{\rem{in}}(\v{q}_1)\ket{\Omega},
+    \end{split}
+\end{equation}
+where the last term on the right-hand side vanished because of the assumption of no forward scattering. Then using 
+\begin{equation}
+    a(t,\v{p}) = i\int d^3x\,g_p^*(x)\lrd_t\phi(x),
+\end{equation}
+we arrive at the same result for the ``in'' state but with $g_p^*$ that, similarly to $g_p$, satisfies the Klein-Gordon equation
+\begin{equation}
+    (\square + m^2)g_p^* = 0.
+\end{equation}
+Doing this for the $m$ particles in the ``out'' state yields to the desired term $\mybrakett{\Omega}{\TO{\phi_{x_1}\cdots\phi_{x_n}\phi_{y_1}\cdots\phi_{y_m}}}{\Omega}$, however the full expression is 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{i^{n}(-i)^m}{Z^{(n + m)/2}}\int\bigg(\prod_{i=1}^n d^4x_i\bigg)\int\bigg(\prod_{j=1}^m d^4y_j\bigg) \\
+        &\times \bigg(\prod_{i=1}^n \frac{g_{p_i}(x_i)}{\sqrt{2E_{p_i}}}\bigg)\bigg(\prod_{j=1}^m \frac{g_{q_j}^*(y_j)}{\sqrt{2E_{q_j}}}\bigg) \\
+        &\times (\square_{x_1} + m^2)\cdots(\square_{x_n} + m^2) \\
+        &\times (\square_{y_1} + m^2)\cdots(\square_{y_m} + m^2) \\
+        &\times \mybrakett{\Omega}{\TO{\phi_{x_1}\cdots\phi_{x_n}\phi_{y_1}\cdots\phi_{y_m}}}{\Omega}.
+    \end{split}
+\end{equation}
+In Fourier-space, the latter expression becomes 
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{i^{n}(-i)^m}{Z^{(n + m)/2}}\int\bigg(\prod_{i=1}^n\frac{d^4x_i}{(2\pi)^{3/2}}e^{-ip_ix_i}\bigg)\int\bigg(\prod_{j=1}^m\frac{d^4y_j}{(2\pi)^{3/2}}e^{iq_jy_j}\bigg) \\
+        &\times \int\bigg(\prod_{i=1}^n\frac{d^4\ell_i}{(2\pi)^4}e^{i\ell_ix_i}\bigg)\int\bigg(\prod_{i=1}^m\frac{d^4k_j}{(2\pi)^4}e^{ik_jy_j}\bigg) \\
+        & \times (\ell_1^2 - m^2)\cdots(\ell_n^2 - m^2)(k_1^2 - m^2)\cdots(k_m^2 - m^2) \\
+        &\times \t{G}(-\ell_1,\dots,-\ell_n,-k_1,\dots,-k_m) \\
+        &= \frac{i^{n}(-i)^m}{(2\pi)^{3(n + m)/2}Z^{(n + m)/2}}(-p_1^2 + m^2)\cdots(-p_n^2 + m^2)\\
+        &\times(-q_1^2 + m^2)\cdots(-q_m^2 + m^2)\t{G}(p_1,\dots,p_n,q_1,\dots,q_m),
+    \end{split}
+\end{equation}
+where we have identified
+\begin{equation}
+    \int \frac{d^4x_i}{(2\pi)^4}e^{-i(p_i - \ell_i)x_i} = \delta^4(p_i - \ell_i),\quad \int \frac{d^4y_j}{(2\pi)^4}e^{-i(- q_j - k_j)y_i} = \delta^4(q_j + k_j).
+\end{equation}
+This is not all. The particles in the ``in'' and ``out'' states are physical particles, and therefore on-shell. This implies that $p_i^2 - m^2 = 0$ and that $q_i^2 - m^2 = 0$, which, on a first look, would result in a zero amplitude; however, we know that the Green's function $\t{G}(p_1,\dots,p_n,q_1,\dots,q_m)$ has a simple pole every time one of the momenta goes on-shell. Therefore, all the $(-p_i^2 + m^2)$ and $(-q_i^2 + m^2)$ terms are cancelled by the poles in the denominator of the Green's function, at the cost that all the contributions from the external propagators are \emph{amputated}; the \emph{amputated Green's function} is therefore defined as 
+\begin{equation}
+    \begin{split}
+        \t{G}_{\rem{amp}}(p_1,\dots,p_n,q_1,\dots,q_m) &:= (-p_1^2 + m^2)\cdots(-p_n^2 + m^2) \\
+        &\times (-q_1^2 + m^2)\cdots(-q_m^2 + m^2)\\
+        &\times\t{G}(p_1,\dots,p_n,q_1,\dots,q_m).
+    \end{split}
+\end{equation}
+Finally, the \emph{LSZ reduction formula} for scalar fields (from Lippmann, Symanzik, and Zimmermann) is 
+\begin{equation}
+    \begin{split}
+        \prescript{}{\rem{out}}{\mybraket{\v{q}_1,\dots,\v{q}_m}{\v{p}_1,\dots,\v{p}_n}}_{\rem{in}} &= \frac{i^n(-i)^m}{(2\pi)^{3(n + m)/2}Z^{(n + m)/2}} \\ 
+        &\times (2\pi)^4\delta^4\bigg(\nsum_ip_i - \nsum_iq_i\bigg) \\
+        &\times \t{G}_{\rem{amp}}(p_1,\dots,p_n,q_1,\dots,q_m).
+    \end{split}
+\end{equation}
++DA CHIARIRE I FATTORI DEL RHS. 
+\begin{ex}
+    Consider the scattering between two initial particles with momentum $\v{p}_1$ and $\v{p}_2$, resulting in two final particles with momentum $\v{q}_1$ and $\v{q}_2$. In the $\phi^4$-theory, one of the Feynman's diagrams that make up the amplitude is 
+    \begin{equation}
+        +FD.
+    \end{equation}
+    Using what we just saw, we can immediately write 
+    \begin{equation}
+        \begin{split}
+            \mybraket{\rem{out}}{\rem{in}} &= \frac{1}{2}\frac{i^2(-i)^2(-i\lambda)^2}{(p_1^2 - m^2)(p_2^2 - m^2)(q_1^2 - m^2)(q_2^2 - m^2)}\int\frac{d^4k_1}{(2\pi)^4}\frac{i}{k_1^2 - m^2} \\
+            &\times \int\frac{d^4k_2}{(2\pi)^4}\frac{i}{k_2^2 - m^2}(2\pi)^4\delta^4(p_1 + p_2 + k_2 - k_1) \\
+            &\times (2\pi)^4\delta^4(k_1 - q_2 - q_2 - k_2).
+        \end{split}
+    \end{equation}
+    The two Dirac's delta that appear in the latter expression for each vertex, can be rewritten so that one of them is the Dirac's delta for the total momentum conservation. In fact, from them, we have that $p_1 + p_2 = k_1 - k_2$ and $q_1 + q_2 = k_1 - k_2$. Thus, by combining them we can write, for example, the second Dirac's delta as $\delta^4(p_1 + p_2 - q_1 - q_2)$. More in general, it is always possible to write one of the Dirac's delta to enclose the total momentum conservation. This can also be said by $L = I - V + 1$, where $L$ is the number of loops, $V$ is the number of vertices, and 1 represents the total momentum conservation.
+\end{ex}
+\begin{obs}
+    If we had different scalar fields for the initial and final states, the LSZ reduction formula would have been 
+    \begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{i^{n}(-i)^m}{Z^{(n + m)/2}}\int\bigg(\prod_{i=1}^n d^4x_i\bigg)\int\bigg(\prod_{j=1}^m d^4y_j\bigg) \\
+        &\times \bigg(\prod_{i=1}^n \frac{g_{p_i}(x_i)}{\sqrt{2E_{p_i}}}\bigg)\bigg(\prod_{j=1}^m \frac{g_{q_j}^*(y_j)}{\sqrt{2E_{q_j}}}\bigg) \\
+        &\times (\square_{x_1} + m_1^2)\cdots(\square_{x_n} + m_n^2) \\
+        &\times (\square_{y_1} + \t{m}^2_1)\cdots(\square_{y_m} + \t{m}^2_n) \\
+        &\times \mybrakett{\Omega}{\TO{\phi_{1,x_1}\cdots\phi_{n,x_n}\t{\phi}_{1,y_1}\cdots\t{\phi}_{m,y_m}}}{\Omega}.
+    \end{split}
+\end{equation}
+\end{obs}
+
+\section{LSZ reduction formula for spinors}
 ...
