@@ -1,16 +1,16 @@
-\chapter{Yukawa's theory}
+\chapter{LSZ reduction and Yukawa's theory}
 We can now start to look at interacting theories involving fermions. We saw that the free action is the Dirac's action in \eqref{eq: Dirac's action}. To define an interacting action starting from this one, we could consider higher order Lorentz-invariant terms in the fermionic fields, like $(\b{\psi}\psi)(\b{\psi}\psi)$ or $(\b{\psi}\gamma^\mu\psi)(\b{\psi}\gamma^\mu\psi)$. However, adding these kinds of terms will result in theories with divergences, which are not what we want to study here. Another thing we can do is to include a different type of field, always being careful to maintain Lorentz invariance. As a first interacting action, we can thus introduce a scalar field $\phi$, writing the \emph{Yukawa's action} 
 \begin{equation}
 \label{eq: Yukawa's action}
-    S_{\rem{Y}} = \int d^4x\,[\b{\psi}(i\sl{\p} - m)\psi + \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 - g\phi\b{\psi}\psi],
+    S_{\rem{Y}} = \int d^4x\,[\b{\psi}(i\sl{\p} - M)\psi + \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 - g\phi\b{\psi}\psi],
 \end{equation}
-which describes \emph{Yukawa's theory}. In \eqref{eq: Yukawa's action}, we can see that the first term is the Dirac's action, the second and the third one are the free action for the scalar field, while the last one is the real interactive term since it mixes the fields, which is proportional to the \emph{coupling constant} $g$, whose role is the same as $\lambda$ for the $\phi^4$ theory seen before. We can briefly look at the dimensions of the terms in \eqref{eq: Yukawa's action}, for instance, the fields have dimension $[\phi] = M$, $[\psi] = M^{3/2}$, while the coupling constant is dimensionless, namely $[g] = 1$. This latter property is crucial for a theory that does not have divergences. In fact, if we were to introduce the term $-\alpha(\b{\psi}\psi)^2$, the coupling constant $\alpha$ would have dimensions $[\alpha] = M^{-2}$, therefore the dimensionless quantity we should look at is $E^2\alpha$. However, this latter quantity clearly grows with $E$, and explodes for $E \to \infty$. This is exactly the reason why Neetonian gravity can not be quantized is the ``usual'' way that we follow for other theories. 
+which describes \emph{Yukawa's theory}. In \eqref{eq: Yukawa's action}, we can see that the first term is the Dirac's action, the second and the third one are the free action for the scalar field, while the last one is the real interactive term since it mixes the fields, which is proportional to the \emph{coupling constant} $g$, whose role is the same as $\lambda$ for the $\phi^4$ theory seen before. We can briefly look at the dimensions of the terms in \eqref{eq: Yukawa's action}, for instance, the fields have dimension $[\phi] = \rem{M}$, $[\psi] = \rem{M}^{3/2}$, while the coupling constant is dimensionless, namely $[g] = 1$. This latter property is crucial for a theory that does not have divergences. In fact, if we were to introduce the term $-\alpha(\b{\psi}\psi)^2$, the coupling constant $\alpha$ would have dimensions $[\alpha] = \rem{M}^{-2}$, therefore the dimensionless quantity we should look at is $E^2\alpha$. However, this latter quantity clearly grows with $E$, and explodes for $E \to \infty$. This is exactly the reason why Newtonian gravity can not be quantized is the ``usual'' way that we follow for other theories. 
 
 Anyway, we shall stick to the action \eqref{eq: Yukawa's action}. The equation of motions that we can derive, let us see explicitly why the theory is an interacting one. In fact, we obtain 
 \begin{equation}
     \begin{cases}
         (\square + m^2)\phi = -g\phi\b{\psi}\psi \\
-        (\sl{\p} - m)\psi = -g\phi\psi
+        (\sl{\p} - M)\psi = -g\phi\psi
     \end{cases},
 \end{equation}
 which are the Klein-Gordon and Dirac's equations with a right-hand side that mixes the fields, instead of being zero. 
@@ -134,7 +134,7 @@ where we identify the Feynman propagator in momentum space as
 \begin{equation}
     \t{\Delta}(k) \equiv \frac{i}{k^2 - m^2 + i\epsilon} = +FD.
 \end{equation}
-In a similar way, the fermion propagator can be written as 
+Similarly, the fermion propagator can be written as 
 \begin{eqnarray}
     S(x - y) = \int\frac{d^4k}{(2\pi)^4}e^{-ik(x - y)}\frac{i}{\sl{k} - m + i\epsilon},
 \end{eqnarray}
@@ -161,7 +161,7 @@ Thus, considering also the spinor indices, the Feynman rule for the vertex is mo
 \end{equation}
 
 \section{Scattering amplitudes}
-Other than correlation functions, the really important objects that we can compute with QFT, which is very powerful at conicidentally, are \emph{scattering amplitudes}
+Other than correlation functions, the really important objects that we can compute with QFT, which is very powerful at coincidentally, are \emph{scattering amplitudes}
 \begin{equation}
     \amp = \mybraket{\rem{out}}{\rem{in}},
 \end{equation}
@@ -219,7 +219,7 @@ The latter is a Gaussian integral which results in
 \begin{equation}
     f(t,\v{x}) = \frac{\sigma^{3/4}}{2E_k}\exp{\bigg\{-\frac{\sigma}{2}(\v{v}_kt - \v{x})^2 - iE_kt - i\v{k}\cdot\v{x}\bigg\}}.
 \end{equation}
-Therefore, this is Gaussian is centered around its classical trajectory $x = v_kt$. For multi-particles state the form is similar
+Therefore, this is Gaussian is centred around its classical trajectory $x = v_kt$. For multi-particles state the form is similar
 \begin{equation}
     \ket{f_1\cdots f_n} = \int \prod_{i=1}^n\frac{d^3p_i}{2E_{p_i}}\t{f}_i(0,\v{p}_i)\ket{\v{p}_1\cdots\v{p}_n},
 \end{equation}
@@ -235,7 +235,7 @@ and the time evolution is also the same as before
     f_i(t,\v{x}_i) = \frac{\sigma^{3/4}}{2E_{k_i}}\exp{\bigg\{-\frac{\sigma}{2}(\v{v}_{k_i}t - \v{x}_i) - iE_{k_i}t - i\v{k}_i\cdot\v{x}_i\bigg\}}.
 \end{equation}
 
-For interacting thoeries, the main assumption is that there exist a vacuum state ``close'' to the free vacuum and that there is a single particle state $\ket{\v{p}}$ of momentum $\v{p}$ and mass $m_p \equiv m$, where $m$ is the \emph{bare mass}\footnote{For more details, see the notes of the course of Advanced QFT +LINK}. It is reasonable to assume that this is an eigenstate of $H$ and of the momentum. With this single particle state, we can compute the quantities found for the free theory, namely 
+For interacting theories, the main assumption is that there exist a vacuum state ``close'' to the free vacuum and that there is a single particle state $\ket{\v{p}}$ of momentum $\v{p}$ and mass $m_p \equiv m$, where $m$ is the \emph{bare mass}\footnote{For more details, see the notes of the course of Advanced QFT +LINK}. It is reasonable to assume that this is an eigenstate of $H$ and of the momentum. With this single particle state, we can compute the quantities found for the free theory, namely 
 \begin{equation}
     \ket{f} = \int\frac{d^3p}{2E_p}\t{f}(p)\ket{\v{p}},\quad \ket{t,f} = \int\frac{d^3p}{2E_p}\t{f}(t,p)\ket{\v{p}},
 \end{equation}
@@ -410,7 +410,7 @@ This is not all. The particles in the ``in'' and ``out'' states are physical par
         &\times\t{G}(p_1,\dots,p_n,q_1,\dots,q_m).
     \end{split}
 \end{equation}
-Finally, the \emph{LSZ reduction formula} for scalar fields (from Lippmann, Symanzik, and Zimmermann) is 
+Finally, the \emph{LSZ reduction formula} for scalar fields (from the physicists Lippmann, Symanzik, and Zimmermann) is 
 \begin{equation}
     \begin{split}
         \prescript{}{\rem{out}}{\mybraket{\v{q}_1,\dots,\v{q}_m}{\v{p}_1,\dots,\v{p}_n}}_{\rem{in}} &= \frac{i^n(-i)^m}{(2\pi)^{3(n + m)/2}Z^{(n + m)/2}} \\ 
@@ -448,4 +448,294 @@ Finally, the \emph{LSZ reduction formula} for scalar fields (from Lippmann, Syma
 \end{obs}
 
 \section{LSZ reduction formula for spinors}
+For the time being, we do not consider the interacting theory and focus on the free one. Since Dirac's equation implies the Klein-Gordon equation, we can expand the spinor field in terms of plain-waves, namely
+\begin{equation}
+    \psi(x) = \nsum_s\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E_p}}[b_s(\v{p})u_s(\v{p})e^{-ipx} + d_s^\dg(\v{p})v_s(\v{p})e^{ipx}],
+\end{equation}
+where conventionally we say that $b^\dg$ is the particle creation operator while $d^\dg$ is the anti-particle creation operator. However, in this instance, it is convenient to rewrite the latter expression as 
+\begin{equation}
+    \psi(x) = \nsum_{s}\int d^3p\,[b_s(\v{p})u_s(\v{p})g_p(x) + d^\dg_s(\v{p})v_s(\v{p})g_p^*(x)],
+\end{equation}
+where, as before, $g_p(x)$ is given by
+\begin{equation}
+    g_p(x) = \frac{1}{(2\pi)^{3/2}\sqrt{2E_p}}e^{-ipx}.
+\end{equation}
+It will be useful to recall the spinor's equations 
+\begin{equation}
+    \begin{cases}
+        (\sl{p} - m)u_s(\v{p}) = 0 \\
+        (\sl{p} + m)v_s(\v{p}) = 0
+    \end{cases},
+\end{equation}
+together with the normalization and orthogonality relations, which are
+\begin{equation}
+    \begin{cases}
+        \b{u}_s(\v{p})u_r(\v{p}) = 2m\delta_{sr} \\
+        \b{v}_s(\v{p})v_r(\v{p}) = -2m\delta_{sr}
+    \end{cases},\quad 
+    \begin{cases}
+        u^\dg_s(\v{p})u_r(\v{p}) = 2E_p\delta_{sr} \\
+        v^\dg_s(\v{p})v_r(\v{p}) = 2E_p\delta_{sr}
+    \end{cases},
+\end{equation}
+and 
+\begin{equation}
+\label{eq: Dirac's spinors orthogonality relations}
+    \begin{cases}
+        \b{u}_s(\v{p})v_r(\v{p}) = 0 \\
+        \b{v}_s(\v{p})u_r(\v{p}) = 0
+    \end{cases},\quad 
+    \begin{cases}
+        u^\dg_s(\v{p})v_r(-\v{p}) = 0 \\
+        v^\dg_s(\v{p})u_r(-\v{p}) = 0
+    \end{cases}
+\end{equation}
+respectively. Moreover, we recall the \emph{Gordon's identities}
+\begin{equation}
+    \begin{cases}
+        \b{u}_s(\v{p})\gamma^\mu u_r(\v{p}) = 2p^\mu\delta_{sr} \\
+        \b{v}_s(\v{p})\gamma^\mu v_r(\v{p}) = 2p^\mu\delta_{sr}
+    \end{cases},
+\end{equation}
+and the completeness relations 
+\begin{equation}
+    \begin{cases}
+        \nsum_s u_s(\v{p})\b{u}_s(\v{p}) = \sl{p} + m \\
+        \nsum_s v_s(\v{p})\b{v}_s(\v{p}) = \sl{p} - m
+    \end{cases}.
+\end{equation}
+To derive the LSZ reduction formula for the spinor fields we just need to follow the same reasoning applied to the scalar fields' case, however, we need to be careful since firstly we deal with spinors so minus signs will appear, and secondly in both the initial and final states now there are particles and anti-particles. As a first step we compute 
+\begin{equation}
+    \begin{split}
+        \int d^3x\,\b{u}_{s'}(\v{p})\gamma^0\psi(x)e^{ip'x} &= \int d^3x\,\b{u}_{s'}(\v{p})\gamma^0\bigg\{\nsum_{s}\int d^3p\,[b_s(\v{p})u_s(\v{p})g_p(x) \\
+        &+ d^\dg_s(\v{p})v_s(\v{p})g_p^*(x)]\bigg\}e^{ip'x} \\
+        &= \nsum_s\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E_p}}\int d^3x\,\b{u}_{s'}(\v{p})\gamma^0 \\
+        &\times [b_s(\v{p})u_s(\v{p})e^{-ipx} + d^\dg_s(\v{p})v_s(\v{p})e^{ipx}]e^{ip'x} \\
+        &= (2\pi)^{3/2}\nsum_s\int\frac{d^3p}{\sqrt{2E_p}}\b{u}_{s'}(\v{p}')\gamma^0 \\
+        &\times [u_s(\v{p})b_s(\v{p})e^{-i(E_p - E_{p'})t}\delta^3(\v{p} - \v{p}') \\
+        &\times v_s(\v{p})d^\dg_s(\v{p})e^{i(E_p + E_{p'})t}\delta^3(\v{p} + \v{p}') \\
+        &= (2\pi)^{3/2}\nsum_s\frac{1}{\sqrt{2E_p}}[\b{u}_{s'}(\v{p}')\gamma^0u_s(\b{p}')b_s(\v{p}') \\
+        &+ \b{u}_{s'}(\v{p}')\gamma^0v_s(-\v{p}')d^\dg_s(-\v{p}')e^{2iE_{p'}x}],
+    \end{split}
+\end{equation}
+then, by using the orthogonality relations, we obtain 
+\begin{equation}
+       \int d^3x\,\b{u}_{s'}(\v{p})\gamma^0\psi(x)e^{ip'x} = (2\pi)^{3/2}\sqrt{2E_p}b_s(\v{p}).
+\end{equation}
+Similarly, integrating $\b{v}_{s'}(\v{p})\gamma^0\psi(x)e^{ip'x}$ give us the expression for $d_s(\v{p})$. Therefore, we can write the creation and annihilation operators for particles and anti-particles as 
+\begin{equation}
+    b_s(\v{p}) = \int d^3x\,\b{u}_s(\v{p})\gamma^0\psi(x)g_p^*(x),\quad b^\dg_s(\v{p}) = \int d^3x\,\b{\psi}(x)\gamma^0u_s(\v{p})g_p(x),
+\end{equation}
+\begin{equation}
+    d_s(\v{p}) = \int d^3x\,\b{\psi}(x)\gamma^0v_s(\v{p})g_p^*(x),\quad d^\dg_s(\v{p}) = \int d^3x\,\b{v}_s(\v{p})\gamma^0\psi(x)g_p(x).
+\end{equation}
+Now we study the temporal evolution of the $b_s(\v{p})$ operator. To do this, we compute its time derivative 
+\begin{equation}
+    i\p_tb_s(\v{p}) = i\int d^3x\,\b{u}_s(\v{p})\gamma^0[\p_t\psi(x)g_p^*(x) + \psi(x)\p_tg_p(x)],
+\end{equation}
+that, using
+\begin{equation}
+    \begin{split}
+        i\b{u}_s(\v{p})\gamma^0 \p_tg_p^*(x) &= i\b{u}_s(\v{p})\gamma^0 (ip^0\gamma^0)g_p^*(x) \\
+        &=i\b{u}_s(\v{p})(-ip_i\gamma^i + m)g_p^*(x) \\
+        &= i\b{u}_s(\v{p})(\v{\gamma}\cdot \nabla + m)g_p^*(x),
+    \end{split}
+\end{equation}
+becomes 
+\begin{equation}
+    \begin{split}
+        i\p_tb_s(\v{p}) &= \int d^3x\,[\b{u}_s(\v{p})\gamma^0i\p_t\psi(x)g_p^*(x) + \b{u}_s(\v{p})\gamma^i\psi(x)\nabla g_p^*(x) \\
+        &+ im\b{u}_s(p)\psi(x)g_p(x)^*] \\
+        &= \int d^3x\,\b{u}_s(\v{p})(i\sl{\p} - m)\psi(x)g_p^*(x),
+    \end{split}
+\end{equation}
+from where we can see that for a free theory $\p_tb_s(\v{p}) = 0$, and similarly for the $b^\dg$, $d$, and $d^\dg$ operators, because of Dirac's equation 
+\begin{equation}
+    (i\sl{\p} - m)\psi(x) = 0.
+\end{equation}
+This means that free creation and annihilation operators do not depend on time. Finally, for convenience, we write the results
+\begin{equation}
+        i\p_tb_s(\v{p}) = \int d^3x\,\b{u}_s(\v{p})(i\sl{\p} - m)\psi(x)g_p^*(x),
+\end{equation}
+\begin{equation}
+        i\p_tb_s^\dg(\v{p}) = \int d^3x\,\b{\psi}(x)(i\backv{\sl{\p}} + m)u_s(\v{p})g_p(x).
+\end{equation}
+
+Like we did for the scalar fields, we can assume that in far past and the far future, the particles and anti-particles behave as free particles. Therefore, we define the free creation and annihilation operators as 
+\begin{equation}
+    \begin{cases}
+        \displaystyle\lim_{t \to \infty}b_s^\dg(p) = \sqrt{Z}b_{s,\rem{in}}^\dg(\v{p}) \\
+        \displaystyle\lim_{t \to -\infty}b_s(p) = \sqrt{Z}b_{s,\rem{out}}^\dg(\v{p})
+    \end{cases},\quad 
+    \begin{cases}
+        \displaystyle\lim_{t \to \infty}d_s^\dg(p) = \sqrt{Z}d_{s,\rem{in}}^\dg(\v{p}) \\
+        \displaystyle\lim_{t \to -\infty}d_s(p) = \sqrt{Z}d_{s,\rem{out}}^\dg(\v{p})
+    \end{cases}
+\end{equation}
+such that they satisfy
+\begin{equation}
+        \begin{cases}
+            b^\dg_{s,\rem{in}}(\v{p})\kO = \dfrac{1}{\sqrt{2E_p}}\ket{s,\v{p}}_{\rem{in}} \\[2ex]
+            \bO b^\dg_{s,\rem{out}}(\v{p}) = \dfrac{1}{\sqrt{2E_p}}\bra{s,\v{p}}_{\rem{out}}
+        \end{cases},\quad 
+        \begin{cases}
+            d^\dg_{r,\rem{in}}(\v{q})\kO = \dfrac{1}{\sqrt{2E_q}}\ket{r,\v{q}}_{\rem{in}} \\[2ex]
+            \bO d^\dg_{r,\rem{out}}(\v{q}) = \dfrac{1}{\sqrt{2E_q}}\bra{r,\v{q}}_{\rem{out}}
+        \end{cases}
+\end{equation}
+Finally, we have all the ingredients to compute scattering amplitudes between spinor fields such as 
+\begin{equation}
+    \amp = \prescript{}{\rem{out}}{\mybraket{\v{k}_1,\dots,\v{k}_r,\v{\ell}_1,\dots,\v{\ell}_s}{\v{p}_1,\dots,\v{p}_n,\v{q}_1,\dots,\v{q}_m}}_{\rem{in}} \equiv \mybraket{\rem{out}}{\rem{in}},
+\end{equation}
+where we have $n$ particles and $m$ anti-particles in the initial state together with $r$ particles and $s$ anti-particles in the final state. From here, the calculations are virtually the same as the scalar's case. So, we start be removing the first particle with momentum $\v{p}_1$ from the initial state through
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \sqrt{2E_{p_1}}\mybrakett{\rem{out}}{b^\dg_{s,\rem{in}}(\v{p}_1)}{\v{p}_2,\dots}_{\rem{in}} \\
+        &= \mybrakett{\rem{out}}{b^\dg_{s,\rem{in}}(\v{p}_1) - b^\dg_{s,\rem{out}}(\v{p}_1) + b^\dg_{s,\rem{out}}(\v{p}_1)}{\v{p}_2,\dots}_{\rem{in}} \\
+        &= \mybrakett{\rem{out}}{b^\dg_{s,\rem{in}}(\v{p}_1) - b^\dg_{s,\rem{out}}(\v{p}_1)}{\v{p}_2,\dots}_{\rem{in}},
+    \end{split}
+\end{equation}
+where in the last we assumed that there is no forward scattering. We continue with
+\begin{equation}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \mybrakett{\rem{out}}{b^\dg_{s,\rem{in}}(\v{p}_1) - b^\dg_{s,\rem{out}}(\v{p}_1)}{\v{p}_2,\dots}_{\rem{in}} \\
+        &= -\sqrt{\frac{2E_{p_1}}{Z}}\int dt_1\,\p_{t_1}(\mybrakett{\rem{out}}{b^\dg_{s}(t_1,\v{p}_1)}{\v{p}_2,\dots}_{\rem{in}}) \\
+        &= i\sqrt{\frac{2E_{p_1}}{Z}}\int d^4x_1\mybrakett{\rem{out}}{\b{\psi}(x_1)}{\v{p}_2,\dots}_{\rem{in}}(i\backv{\sl{\p}} + m)u_s(\v{p}_1)g_{p_1}(x).
+    \end{split}
+\end{equation}
+Just for clarity, we can do the computation for the removal of the first anti-particle. The first steps are  
+\begin{equation}
+    \begin{split}
+        \mybrakett{\rem{out}}{\b{\psi}(x_1)}{\v{p}_2,\dots}_{\rem{in}} &= \sqrt{2E_{q_1}}\mybrakett{\rem{out}}{\b{\psi}(x_1)d^\dg_{\rem{in}}(\v{q}_1) - d^\dg_{\rem{out}}(\v{q}_1)\b{\psi}(x_1)}{\v{2},\dots}_{\rem{in}} \\
+        &= -\sqrt{\frac{2E_{q_1}}{Z}}\int dt_2\,\mybrakett{\rem{out}}{\TO{\b{\psi}(x_1)\p_{t_2}d^\dg(\v{q}_1)}}{\v{2},\dots}_{\rem{in}},
+    \end{split}
+\end{equation}
+and the final result will be analogous to the particle case. Doing this process for all the particles and anti-particles in both the initial and final states yields to the LSZ reduction formula for spinors
+\begin{equation}
+\label{eq: LSZ reduction formula for spinors}
+    \begin{split}
+        \mybraket{\rem{out}}{\rem{in}} &= \frac{(-i)^{n+m}\,i^{r + s}}{Z^{(n + m + r + s)/2}}\int\bigg[\prod_{i=1}^n d^4x_i\,g_{p_i}(x_i)\bigg]\int\bigg[\prod_{j=1}^m d^4y_j\,g^*_{q_j}(y_j)\bigg] \\
+        &\times \int\bigg[\prod_{a=1}^r d^4u_a\,g^*_{k_a}(u_a)\bigg]\int\bigg[\prod_{b=1}^s d^4z_b\,g_{z_b}(z_b)\bigg] \\
+        &\times \b{v}(\v{q}_1)\cdots\b{v}(\v{q}_m)\b{u}(\v{k}_1)\cdots\b{u}(\v{k}_m) \\
+        &\times (i\sl{\p}_{y_1} - m)\cdots(i\sl{\p}_{y_m} - m)(i\sl{\p}_{u_1} - m)\cdots(i\sl{\p}_{u_r} - m) \\
+        &\times \mybrakett{\Omega}{\TO{\psi_{u_1}\cdots\psi_{u_r}\b{\psi}_{z_1}\cdots\b{\psi}_{z_s}\b{\psi}_{x_1}\cdots\b{\psi}_{x_n}\psi_{y_1}\cdots\psi_{y_m}}}{\Omega} \\
+        &\times (i\backv{\sl{\p}}_{x_1} - m)\cdots(i\backv{\sl{\p}}_{x_n} - m)(i\backv{\sl{\p}}_{z_1} - m)\cdots(i\backv{\sl{\p}}_{z_s} - m) \\
+        &\times u(\v{p}_1)\cdots u(\v{p}_n)\b{v}(\v{\ell}_1)\cdots\b{v}_s(\v{\ell}_s).
+    \end{split}
+\end{equation}
+Again, one can go in Fourier-space and see that the poles of the Green's function are perfectly compensated by the terms in the numerator, and therefore define an amputated Green's function is the same fashion as the scalar's case. Moreover, from \eqref{eq: LSZ reduction formula for spinors}, we can deduce the following Feynman's rules:
+\begin{enumerate}
+    \item for every ingoing particle at $x_i$ with momentum $\v{p}_i$, insert $\b{\psi}(x_i)$ and $u_s(\v{p}_i)$;
+    \item for every ingoing anti-particle at $y_i$ with momentum $\v{q}_i$, insert $\psi(y_i)$ and $\b{v}_s(\v{p}_i)$;
+    \item for every outgoing particle at $u_i$ with momentum $\v{k}_i$, insert $\psi(u_i)$ and $\b{u}_s(\v{k}_i)$;
+    \item for every outgoing anti-particle at $z_i$ with momentum $\v{\ell}_i$, insert $\b{\psi}(z_i)$ and $v_s(\v{\ell}_i)$.
+\end{enumerate}
+
+\section{\texorpdfstring{$2 \to 2$}{2 in 2} interactions in Yukawa's theory}
+As we said at the beginning of the chapter, Yukawa's theory describes the interaction between a scalar field $\phi$ and a spinor filed $\psi$. The Lagrangian of this theory, looking at \eqref{eq: Yukawa's action} is 
+\begin{equation}
+\label{eq: Yukawa's Lagrangian}
+    \Lag_{\rem{Y}} = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 + \b{\psi}(i\sl{\p} - M)\psi - g\phi\b{\psi}\psi.
+\end{equation}
+The Feynman's rule in coordinate-space for this theory are:
+\begin{enumerate}
+    \item for every internal line, associate the scalar and spinor propagators accordingly, they are
+    \begin{equation}
+        \Delta(x - y) = \int \frac{d^4p}{(2\pi)^4}\,\frac{i}{p^2 - m^2 + i\epsilon}e^{-ip(x - y)},
+    \end{equation}
+    \begin{equation}
+        S_{\alpha\beta}(x - y) = \int \frac{d^4p}{(2\pi)^4}\,\frac{i(\sl{p} + M)_{\alpha\beta}}{p^2 - M^2 + i\epsilon}e^{-ip(x - y)};
+    \end{equation}
+    \item for every vertex with position $x^\mu$ and spinor indices $\alpha$ and $\beta$, associate the contribution $-ig\int d^4x\,\delta_{\alpha\beta}$;
+    \item divide for the symmetry factor of the diagram.
+\end{enumerate}
+In Fourier-space, the rules above become:
+\begin{enumerate}
+    \item for every internal line, associate the scalar and spinor propagators accordingly, they are
+    \begin{equation}
+        \t{\Delta}(p) = \frac{i}{p^2 - m^2 + i\epsilon},\quad \t{S}_{\alpha\beta}(p) = \frac{i(\sl{p} + M)_{\alpha\beta}}{p^2 - M^2 + i\epsilon};
+    \end{equation}
+    \item for every vertex with spinor indices $\alpha$ and $\beta$, associate the contribution $-ig(2\pi)^4\delta^4(\sum p_{\rem{in}} - \sum p_{\rem{out}})\delta_{\alpha\beta}$;
+    \item divide for the symmetry factor of the diagram.
+\end{enumerate}
+As for every field theory, one should also integrate over all spacetime the undetermined momenta that appear in the loops. 
+
+Finally, the $2 \to 2$ scattering process that are possible in Yukawa's theory are 
+\begin{equation}
+    e^\pm + e^\pm \to e^\pm + e^\pm,\quad e^+ + e^- \to e^+ + e^-,
+\end{equation}
+\begin{equation}
+    e^+ + e^- \to \phi + \phi,\quad e^\pm + \phi \to e^\pm + \phi.
+\end{equation}
+In particular, the processes whose scattering amplitude we are going to compute are 
+\begin{equation}
+    e^- + e^- \to e^- + e^-,\quad e^+ + e^- \to \phi + \phi.
+\end{equation}
+
+\subsection{\texorpdfstring{$e^- + e^- \to \phi + \phi$}{e+ + e- in 2phi} interaction}
+At tree-level, this process consists in two inequivalent Feynman's diagrams, they are 
+\begin{equation}
+    +FD.
+\end{equation}
+The scattering amplitude of this process is denoted as always with $\amp \equiv \mybraket{\rem{out}}{\rem{in}}$, and we can write it as 
+\begin{equation}
+    \mybraket{\rem{out}}{\rem{in}} = \rsm = \rsm_1 + \rsm_2
+    %(2\pi)^4\delta^4\bigg(\sum p_{\rem{in}} - \sum p_{\rem{out}}\bigg),
+\end{equation}
+where $\rsm$ is called \emph{reduced $S$ matrix element}, which is the sum of $\rsm_1$, associated with the first diagram, and $\rsm_2$, associated with the second one. We start by computing $\rsm_1$. This is 
+\begin{equation}
+    \begin{split}
+        \rsm_1 &= (-ig)^2u_{s,\alpha}(\v{p}_1)S_{\delta\gamma}(\ell)\b{v}_{s,\beta}(\v{p}_2)\delta_{\alpha\gamma}\delta_{\beta\delta} \\
+        &\times (2\pi)^4\delta^4(p_1 - \ell - k_1)(2\pi)^4\delta^4(\ell + p_2 - k_2) \\
+        &= (-ig)^2u_{s,\alpha}(\v{p}_1)\b{v}_{s,\beta}(\v{p}_2)\delta_{\alpha\gamma}\delta_{\beta\delta}\int \frac{d^4\ell}{(2\pi)^4}(\sl{\ell} - M)^{-1}_{\delta\gamma} \\
+        &\times (2\pi)^4\delta^4(p_1 - \ell - k_1)(2\pi)^4\delta^4(p_1 + p_2 - k_1 - k_2) \\
+        &= i(-ig)^2u_{s,\alpha}(\v{p}_1)\b{v}_{s,\beta}(\v{p}_2)\delta_{\alpha\gamma}\delta_{\beta\delta}(\sl{p}_1 - \sl{k}_1 - M)^{-1}_{\delta\gamma} \\
+        &\times (2\pi)^4\delta^4(p_1 + p_2 - k_1 - k_2) \\
+        &= i(-ig)^2\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_1 - M)^{-1}u_s(\v{p}_1)(2\pi)^4\delta^4(p_1 + p_2 - k_1 - k_2) \\
+        &\equiv \rsm_1'(2\pi)^4\delta^4(p_1 + p_2 - k_1 - k_2).
+    \end{split}
+\end{equation}
+For convenience, we just focus on $\rsm_1'$ and rename it $\rsm_1' \mapsto \rsm_1$, therefore having  
+\begin{equation}
+    \begin{split}
+        \rsm_1 &= i(-ig)^2\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_1 - M)^{-1}u_s(\v{p}_1) \\
+        &= -ig^2\frac{1}{(p_1 - k_1)^2 - M^2}\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_1 + M)u_s(\v{p}_1).
+    \end{split}
+\end{equation}
+A simple trick to get the result above is to \emph{follow the fermionic line} going in the opposite direction in the corresponding diagram. Using this trick, we can easily understand that $\rsm_2$ is given by 
+\begin{equation}
+    \rsm_2 = -ig^2\frac{1}{(p_1 - k_2)^2 - M^2}\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_2 + M)u_s(\v{p}_1).
+\end{equation}
+Having obtained $\rsm_1$ and $\rsm_2$, we can sum them to get $\mybraket{\rem{out}}{\rem{in}}$ as desired. However, in reality we are interested in $|\mybraket{\rem{out}}{\rem{in}}|^2$, so we need to compute 
+\begin{equation}
+    |\mybraket{\rem{out}}{\rem{in}}|^2 = |\rsm|^2 = |\rsm_1|^2 + |\rsm_2|^2 + 2\Re{\{\rsm_1^\dg\rsm_2\}}.
+\end{equation}
+The hermitian conjugates are 
+\begin{equation}
+    \rsm_1^\dg = ig^2\frac{1}{(p_1 - k_1)^2 - M^2}\b{u}_s(\v{p}_1)(\sl{p}_1 - \sl{k}_1 + M)v_s(\v{p}_2),
+\end{equation}
+\begin{equation}
+    \rsm_2 = -ig^2\frac{1}{(p_1 - k_2)^2 - M^2}\b{u}_s(\v{p}_1)(\sl{p}_1 - \sl{k}_2 + M)v_s(\v{p}_2).
+\end{equation}
+Thus, the squared modulus of $\rsm_1$ is
+\begin{equation}
+    \begin{split}
+         \sum_{s,s'}|\rsm_1|^2 &= \sum_{s,s'}\frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_1 + M)\b{u}_{s'}(\v{p}_1) \\
+        &\times u_{s'}(\v{p}_1)(\sl{p}_1 - \sl{k}_1 + M)v_s(\v{p}_2),
+    \end{split}
+\end{equation}
+where we have summed over the possible spin states since, as we observed experimentally, it is not possible to fix the spin states for the final state, therefore to match experiments we need to sum over all possible polarizations, in this case $s$ is the polarization of the electron, while $s'$ is the polarization of the positron. Therefore, we can rearrange the previous equation as 
+\begin{equation}
+    \begin{split}
+         \sum_{s,s'}|\rsm_1|^2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}\bigg[\sum_{s}v_{s,\alpha}(\v{p}_2)\b{v}_{s',\delta}(\v{p}_2)\bigg] \\
+         &\times \bigg[\sum_{s'}u_{s',\beta}(\v{p}_1)\b{u}_{s',\gamma}(\v{p}_1)\bigg](\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 + M)_{\gamma\delta} \\
+         &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}(\sl{p}_2 - M)_{\delta\alpha}(\sl{p}_1 + M)_{\beta\gamma}\\
+         &\times (\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 - M)_{\gamma\delta},
+    \end{split}
+\end{equation}
+where we have used +EQREF. 
+
+
+\subsection{\texorpdfstring{$e^- + e^- \to e^- + e^-$}{2e- in 2e-} interaction}
 ...
+
