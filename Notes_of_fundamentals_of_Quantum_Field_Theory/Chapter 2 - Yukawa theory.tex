@@ -499,6 +499,7 @@ respectively. Moreover, we recall the \emph{Gordon's identities}
 \end{equation}
 and the completeness relations 
 \begin{equation}
+\label{eq: spinor's completeness relations}
     \begin{cases}
         \nsum_s u_s(\v{p})\b{u}_s(\v{p}) = \sl{p} + m \\
         \nsum_s v_s(\v{p})\b{v}_s(\v{p}) = \sl{p} - m
@@ -704,7 +705,7 @@ For convenience, we just focus on $\rsm_1'$ and rename it $\rsm_1' \mapsto \rsm_
 \end{equation}
 A simple trick to get the result above is to \emph{follow the fermionic line} going in the opposite direction in the corresponding diagram. Using this trick, we can easily understand that $\rsm_2$ is given by 
 \begin{equation}
-    \rsm_2 = -ig^2\frac{1}{(p_1 - k_2)^2 - M^2}\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_2 + M)u_s(\v{p}_1).
+    \rsm_2 = -ig^2\frac{1}{(p_1 - k_1)^2 - M^2}\b{v}_s(\v{p}_2)(\sl{p}_1 - \sl{k}_2 + M)u_s(\v{p}_1).
 \end{equation}
 Having obtained $\rsm_1$ and $\rsm_2$, we can sum them to get $\mybraket{\rem{out}}{\rem{in}}$ as desired. However, in reality we are interested in $|\mybraket{\rem{out}}{\rem{in}}|^2$, so we need to compute 
 \begin{equation}
@@ -715,7 +716,7 @@ The hermitian conjugates are
     \rsm_1^\dg = ig^2\frac{1}{(p_1 - k_1)^2 - M^2}\b{u}_s(\v{p}_1)(\sl{p}_1 - \sl{k}_1 + M)v_s(\v{p}_2),
 \end{equation}
 \begin{equation}
-    \rsm_2 = -ig^2\frac{1}{(p_1 - k_2)^2 - M^2}\b{u}_s(\v{p}_1)(\sl{p}_1 - \sl{k}_2 + M)v_s(\v{p}_2).
+    \rsm_2 = -ig^2\frac{1}{(p_1 - k_1)^2 - M^2}\b{u}_s(\v{p}_1)(\sl{p}_1 - \sl{k}_2 + M)v_s(\v{p}_2).
 \end{equation}
 Thus, the squared modulus of $\rsm_1$ is
 \begin{equation}
@@ -727,14 +728,102 @@ Thus, the squared modulus of $\rsm_1$ is
 where we have summed over the possible spin states since, as we observed experimentally, it is not possible to fix the spin states for the final state, therefore to match experiments we need to sum over all possible polarizations, in this case $s$ is the polarization of the electron, while $s'$ is the polarization of the positron. Therefore, we can rearrange the previous equation as 
 \begin{equation}
     \begin{split}
-         \sum_{s,s'}|\rsm_1|^2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}\bigg[\sum_{s}v_{s,\alpha}(\v{p}_2)\b{v}_{s',\delta}(\v{p}_2)\bigg] \\
-         &\times \bigg[\sum_{s'}u_{s',\beta}(\v{p}_1)\b{u}_{s',\gamma}(\v{p}_1)\bigg](\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 + M)_{\gamma\delta} \\
-         &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}(\sl{p}_2 - M)_{\delta\alpha}(\sl{p}_1 + M)_{\beta\gamma}\\
-         &\times (\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 - M)_{\gamma\delta},
+        \sum_{s,s'}|\rsm_1|^2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}\bigg[\sum_{s}v_{s,\alpha}(\v{p}_2)\b{v}_{s',\delta}(\v{p}_2)\bigg] \\
+        &\times \bigg[\sum_{s'}u_{s',\beta}(\v{p}_1)\b{u}_{s',\gamma}(\v{p}_1)\bigg](\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 + M)_{\gamma\delta} \\
+        &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2}(\sl{p}_2 - M)_{\delta\alpha}(\sl{p}_1 + M)_{\beta\gamma}\\
+        &\times (\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 - M)_{\gamma\delta},
     \end{split}
 \end{equation}
-where we have used +EQREF. 
+where we have used \eqref{eq: spinor's completeness relations}. Moreover, we can observe that the spinor indices ``close'', with this we mean that $\alpha \to \beta \to \gamma \to \delta \to \alpha$, which implies that
+\begin{equation}
+    (\sl{p}_2 - M)_{\delta\alpha}(\sl{p}_1 + M)_{\beta\gamma}(\sl{p}_1 - \sl{k}_1 + M)_{\alpha\beta}(\sl{p}_1 - \sl{k}_1 - M)_{\gamma\delta} \equiv M_{\alpha\alpha},
+\end{equation} 
+which, since we are dealing with matrices, corresponds to the trace of the product matrix $M$. Thus, we can write 
+\begin{equation}
+    \begin{split}
+        \sum_{s,s'}|\rsm_1|^2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2} \\
+        &\times \tr{(\sl{p}_2 - M)(\sl{p}_1 + M)(\sl{p}_1 - \sl{k}_1 + M)(\sl{p}_1 - \sl{k}_1 - M)}.
+    \end{split}
+\end{equation} 
+Similarly, the squared modulus fo $\rsm_2$ is 
+\begin{equation}
+    \begin{split}
+        \sum_{s,s'}|\rsm_1|^2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2]^2} \\
+        &\times \tr{(\sl{p}_2 - M)(\sl{p}_1 + M)(\sl{p}_1 - \sl{k}_2 + M)(\sl{p}_1 - \sl{k}_2 - M)}.
+    \end{split}
+\end{equation}
+We can continue by computing 
+\begin{equation}
+    \begin{split}
+        \sum_{s,s'}\rsm_1^\dg\rsm_2 &= \frac{g^4}{[(p_1 - k_1)^2 - M^2][(p_1 - k_2)^2 - M^2]} \\
+        &\times \bigg[\nsum_{s}v_{s,\alpha}(\v{p}_2)\b{v}{s,\gamma}(\v{p}_2)\bigg]\bigg[\nsum_{s'}\b{u}_{s',\beta}(\v{p}_1)u{s',\delta}(\v{p}_1)\bigg] \\
+        &\times (\sl{p}_1 - \sl{k}_1 + M)_{\beta\alpha}(\sl{p}_1 - \sl{k}_1 + M)_{\gamma\delta} \\
+        &= \frac{g^4}{[(p_1 - k_1)^2 - M^2][(p_1 - k_2)^2 - M^2]}(\sl{p}_2 - M)_{\alpha\gamma} \\
+        &\times (\sl{p}_1 + M)_{\delta\beta}(\sl{p}_1 - \sl{k}_1 + M)_{\beta\alpha}(\sl{p}_1 - \sl{k}_1 + M)_{\gamma\delta} \\
+        &= \frac{g^4}{[(p_1 - k_1)^2 - M^2][(p_1 - k_2)^2 - M^2]} \\
+        &\times \tr{(\sl{p}_2 - M)(\sl{p}_1 - \sl{k}_1 + M)(\sl{p_1} + M)(\sl{p}_1 - \sl{k}_1 + M)},
+    \end{split}
+\end{equation}
+where we have used the relations in \eqref{eq: spinor's completeness relations} and the fact that it does not matter where we start to ``close'' the spinor indices. This is because of the fundamental property of the trace: 
+\begin{quote}
+    \centering
+    \fbox{
+        \scalebox{2}{``$\mathfrak{The\,trace\,is\,cyclic.}$''}
+    }
+\end{quote}
+Therefore, since the product $\rsm_1^\dg\rsm_2$ yields to a real quantity, we simply obtain 
+\begin{equation}
+    \begin{split}
+        2\sum_{s,s'}\Re{\{\rsm_1^\dg\rsm_2\}} &= \frac{2g^4}{[(p_1 - k_1)^2 - M^2][(p_1 - k_2)^2 - M^2]} \\
+        &\times \tr{(\sl{p}_2 - M)(\sl{p}_1 - \sl{k}_1 + M)(\sl{p_1} + M)(\sl{p}_1 - \sl{k}_1 + M)}
+    \end{split}
+\end{equation}
+Looking at the latter expression, it becomes obvious that we need a way to compute traces of products of $\gamma$ matrices. 
 
+\subsubsection{Properties of \texorpdfstring{$\gamma$}{gamma} matrices}
+We already know that the $\gamma$ matrices follow the Clifford algebra
+\begin{equation}
+    \acomm{\gamma^\mu}{\gamma^\nu} = 2\eta^{\mu\nu}\IM_4,
+\end{equation}
+and that $\gamma^\mu\gamma_5\gamma^\mu = -\gamma^\mu$, where $\gamma^5$ is the \emph{chirality matrix}, such that $\gamma_5^2 = \IM_4$. So, we can start by simplest example, which is the trace of the product of two $\gamma$ matrices. This is 
+\begin{equation}
+    \begin{split}
+        \tr{\gamma^\mu\gamma^\nu} &= \frac{1}{2}(\tr{\gamma^\mu\gamma^\nu} + \tr{\gamma^\nu\gamma^\mu}) \\
+        &= \frac{1}{2}(\tr{\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu}) \\
+        &= \frac{1}{2}\tr{\acomm{\gamma^\mu}{\gamma^\nu}} \\
+        &= \eta^{\mu\nu}\tr{\IM_4} \\
+        &= 4\eta^{\mu\nu}.
+    \end{split}
+\end{equation} 
+We can immediately geenralize to a product of a generic odd number of $\gamma$ matrices. This results in
+\begin{equation}
+    \begin{split}
+        \tr{\gamma^{\alpha_1}\cdots\gamma^{\alpha_{2n + 1}}} &= \tr{\gamma^{\alpha_1}\gamma_5^2\cdots\gamma_5^3\gamma^{\alpha_{2n + 1}}\gamma_5^2} \\
+        &= \tr{(\gamma_5\gamma^{\alpha_1}\gamma^5)\cdots(\gamma_5\gamma^{\alpha_{2n + 1}}\gamma_5)} \\
+        &= (-1)^{2n + 1}\tr{\gamma^{\alpha_1}\cdots\gamma^{\alpha_{2n + 1}}} \\
+        &= -\tr{\gamma^{\alpha_1}\cdots\gamma^{\alpha_{2n + 1}}},
+    \end{split}
+\end{equation}
+which is a contradition, implying that 
+\begin{equation}
+    \tr{\gamma^{\alpha_1}\cdots\gamma^{\alpha_{2n + 1}}} = 0,\quad \forall n \in \bb{N}.
+\end{equation}
+We can go back to a less general example, namely $\tr{\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma}$. The computation starts with 
+\begin{equation}
+    \begin{split}
+        \tr{\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma} &= \tr{\gamma^\mu\gamma^\nu(2\eta^{\rho\sigma} - \gamma^\sigma\gamma^\rho)} \\
+        &= \tr{2\eta^{\rho\sigma}\gamma^\mu\gamma^\nu} - \tr{\gamma^\mu\gamma^\nu\gamma^\sigma\gamma^\rho} \\
+        &= 8\eta^{\rho\sigma}\eta^{\mu\nu} - \tr{\gamma^\mu(2\eta^{\nu\sigma} - \gamma^\sigma\gamma^\nu)\gamma^\rho} \\
+        &= 8\eta^{\rho\sigma}\eta^{\mu\nu} - 8\eta^{\nu\sigma}\eta^{\mu\rho} + \tr{\gamma^\mu\gamma^\nu\gamma^\rho} \\
+        &= 8\eta^{\rho\sigma}\eta^{\mu\nu} - 8\eta^{\nu\sigma}\eta^{\mu\rho} + \tr{(2\eta^{\mu\sigma} - \gamma^\sigma\gamma^\mu)\gamma^\nu\gamma^\rho} \\
+        &= 8\eta^{\rho\sigma}\eta^{\mu\nu} - 8\eta^{\nu\sigma}\eta^{\mu\rho} \\
+        &- 8\eta^{\mu\sigma}\eta^{\nu\rho} - \tr{\gamma^\sigma\gamma^\mu\gamma^\nu\gamma^\rho}.
+    \end{split}
+\end{equation}
+Completing the computation by moving $\tr{\gamma^\sigma\gamma^\mu\gamma^\nu\gamma^\rho}$ on the left hand side and using the fact that the trace is cyclic, we finally obtain 
+\begin{equation}
+    \tr{\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma} = 4(\eta^{\rho\sigma}\eta^{\mu\nu} - \eta^{\nu\sigma}\eta^{\mu\rho} + \eta^{\mu\sigma}\eta^{\nu\rho}).
+\end{equation}
 
 \subsection{\texorpdfstring{$e^- + e^- \to e^- + e^-$}{2e- in 2e-} interaction}
 ...
